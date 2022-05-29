@@ -1,0 +1,35 @@
+[book]
+authors = ["Gary Wang"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Learning Programming Book"
+description = "The example book covers examples."
+
+# [rust]
+# edition = "2018"
+
+# [build]
+# build-dir = "my-example-book"
+# create-missing = false
+
+[output.html]
+# theme = "my-theme"
+# default-theme = "light"
+# preferred-dark-theme = "navy"
+# curly-quotes = true
+mathjax-support = true
+# Note: The usual delimiters MathJax uses are not yet supported. 
+# You can't currently use $$ ... $$ as delimiters and the \[ ... \] 
+# delimiters need an extra backslash to work. Hopefully this 
+# limitation will be lifted soon.
+# copy-fonts = true
+# additional-css = ["custom.css", "custom2.css"]
+# additional-js = ["custom.js"]
+no-section-label = true
+# git-repository-url = "https://github.com/rust-lang/mdBook"
+# git-repository-icon = "fa-github"
+# edit-url-template = "https://github.com/rust-lang/mdBook/edit/master/guide/{path}"
+# site-url = "/example-book/"
+# cname = "myproject.rs"
+# input-404 = "not-found.md"
