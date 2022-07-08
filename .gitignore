@@ -10,3 +10,5 @@ src/protocols
 src/python
 src/servers
 src/windows
+src/devtools
+linksrc.ps1
