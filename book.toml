@@ -1,3 +1,5 @@
+# Configuration file for mdbook
+
 [book]
 authors = ["Gary Wang"]
 language = "en"
@@ -13,6 +15,8 @@ description = "The example book covers examples."
 # build-dir = "my-example-book"
 # create-missing = false
 
+[preprocessor.pagetoc]
+
 [output.html]
 # theme = "my-theme"
 # default-theme = "light"
@@ -26,6 +30,10 @@ mathjax-support = true
 # copy-fonts = true
 # additional-css = ["custom.css", "custom2.css"]
 # additional-js = ["custom.js"]
+# additional-css = ["theme/css/style.css"]
+# additional-js = ["theme/sidebar.js"]
+additional-css = ["theme/pagetoc.css"]
+additional-js  = ["theme/pagetoc.js"]
 no-section-label = true
 # git-repository-url = "https://github.com/rust-lang/mdBook"
 # git-repository-icon = "fa-github"
