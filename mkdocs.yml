@@ -1,0 +1,133 @@
+site_name: Learning Programming Book
+# site_name: !ENV SITE_NAME
+# site_name: !ENV SITE_NAME, 'My default site name']
+theme: readthedocs
+docs_dir: src
+site_dir: site
+site_url: https://learn.program.com/mkdocs/
+site_description: programming notes for daily use.
+site_author: Gary Wang
+use_directory_urls: false
+nav:
+    - Home: index.md
+    - 程序设计语言:
+          - Python:
+                - 编程基础: ./Python/Python编程基础.md
+                - 开发环境: ./Python/Python开发环境.md
+                - 数据类型: ./Python/Python数据类型.md
+                - 输入输出: ./Python/Python输入输出.md
+                - 编程应用: ./Python/Python编程应用.md
+                - 数值计算: ./Python/Python数值计算.md
+                - 系统编程: ./Python/Python系统编程.md
+                - 高级编程: ./Python/Python高级编程.md
+          - Java:
+                - 编程基础: .\Java\JAVA编程基础.md
+                - 开发环境:
+                      - Java开发环境: Java\Java开发环境.md
+                      - Maven配置: .\Java\Maven POM.md
+                - 数据类型: .\Java\JAVA数据类型.md
+                - 输入输出: .\Java\JAVA输入输出.md
+                - 系统编程: .\Java\JAVA系统编程.md
+                - Scala: .\Java\Scala.md
+          - C#.NET:
+                - 编程基础: .\CSharp.NET\CSharp编程基础.md
+                - 输入输出: .\CSharp.NET\CSharp输入输出.md
+                - 数据容器: .\CSharp.NET\CSharp数据容器.md
+                - 数值计算: .\CSharp.NET\CSharp数值计算.md
+                - .NET开发: .\CSharp.NET\dotnet开发.md
+          - C和C++:
+                - Modern C++: .\CC++\Modern C++.md
+                - 开发环境: .\CC++\C++开发环境.md
+                - 数据容器: .\CC++\C++容器.md
+                - 输入输出: .\CC++\输入输出.md
+                - 标准库:
+                      - 标准函数库: CC++\标准函数库.md
+                      - 数学函数: .\CC++\数学函数.md
+          - 开发工具:
+                - Git: .\开发环境\git.md
+    - 操作系统:
+          - Linux:
+                - 配置管理: ./Linux/Linux配置和管理.md
+                - Shell Script: ./Linux/Linux-Shell.md
+                - Linux发行版: ./Linux/Linux发行版.md
+          - Windows:
+                - 配置管理: .\Windows\Windows配置管理.md
+                - Shell: .\Windows\Windows Shell.md
+                - 应用软件: .\Windows\Windows Applications.md
+          - 应用软件:
+                - 程序开发: .\应用软件\程序开发软件.md
+                - 服务器管理: .\应用软件\服务器管理软件.md
+                - 网络访问: .\应用软件\网络访问工具.md
+                - 网络服务: .\应用软件\网络服务软件.md
+                - 文档生成: .\应用软件\文档生成工具.md
+                - 文件处理: .\应用软件\文件处理工具.md
+                - 协作办公: .\应用软件\协作办公软件.md
+    - 机器学习:
+          - 机器学习实践:
+                - 机器学习实践: 机器学习/机器学习实践.md
+                - scikit-learn: ./机器学习/ScikitLearn.md
+                - TensorFlow: ./机器学习/TensorFlow.md
+                - Pytorch: ./机器学习/Pytorch.md
+          - 原理与算法: ./机器学习/机器学习原理与算法.md
+          - 统计学习算法: ./机器学习/统计学习算法.md
+    - 数据库:
+          - SQL:
+                - SQL语法: 数据库/SQL语法.md
+                - SQL DDL: ./数据库/SQL DDL.md
+                - SQL DML: ./数据库/SQL DML.md
+                - 数据类型: ./数据库/数据类型.md
+          - MySQL: ./数据库/MySQL.md
+          - PostgreSQL: ./数据库/PostgreSQL.md
+          - Hive SQL: ./数据库/HiveSQL.md
+          - Elasticsearch: ./数据库/Elasticsearch.md
+          - Mongodb: ./数据库/Mongodb.md
+          - 图数据库: ./数据库/GraphDatabase.md
+    - 大数据:
+          - 分布式大数据处理:
+                - 分布式大数据处理: 服务器\分布式大数据处理.md
+                - CDH6安装教程: .\服务器\CDH6大数据集群离线安装.md
+                - Pyspark: .\服务器\Spark Python API.md
+                - 流数据处理: .\服务器\流数据处理.md
+          - 容器编排: .\服务器\容器编排.md
+          - 虚拟化: .\服务器\虚拟化.md
+          - 任务编排:
+                - Airflow: .\服务器\Airflow.md
+    - 其他:
+          - 数据标记语言:
+                - JSON and YAML: .\数据交换语言\JSON and YAML.md
+                - XML: .\数据交换语言\XML.md
+          - 网络协议:
+                - HTTP: .\Protocols\http.md
+                - DNS: .\Protocols\DNS.md
+                - 端口分配: .\Protocols\端口分配.md
+                - IP承载协议: .\Protocols\IP protocol numbers.md
+                - RPC: .\Protocols\RPC.md
+    # - About: about.md
+
+# markdown_extensions:
+#     - smarty
+#     - toc:
+#         permalink: True
+#     - sane_lists
+
+# pip install mkdocs-foo-plugin
+# https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins#navigation--page-building
+plugins:
+    - search
+    - section-index # - mkdocs-section-index only works for first level section
+    - exclude: # - mkdocs-exclude ✔
+          glob:
+              - "*.tmp"
+              - "*.pdf"
+              - "*.gz"
+              - "*.zip"
+              - "CSharp.NET/MediaInfo*"
+              - "Java/Java语言与面向对象程序设计*"
+          regex:
+              - '.*\.(doc|ppt|xls|vsd)x?$'
+    - add-number: # mkdocs-add-number-plugin ❌
+          strict_mode: False
+          order: 2
+
+# 引用块中包含的代码块不能正确被渲染。
+# 页面内目录支持(需要插入div块)
