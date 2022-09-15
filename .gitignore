@@ -15,9 +15,10 @@ src/Linux
 src/Protocols
 src/Python
 src/Windows
+theme/css/style.css
 theme/sidebar.js
 theme/pagetoc.js
-theme/css/style.css
+theme/MathJax.js
 
 *.zip
 linksrc.ps1
