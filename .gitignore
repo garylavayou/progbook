@@ -1,4 +1,4 @@
-.vscode
+.vscode/*
 site
 book
 src/笔记
@@ -15,10 +15,9 @@ src/Linux
 src/Protocols
 src/Python
 src/Windows
-
-*.zip
-linksrc.ps1
-theme/index.hbs
 theme/sidebar.js
 theme/pagetoc.js
 theme/css/style.css
+
+*.zip
+linksrc.ps1
