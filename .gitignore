@@ -1,4 +1,4 @@
-.vscode/*
+.vscode
 site
 book
 src/笔记
@@ -21,4 +21,6 @@ theme/pagetoc.js
 theme/MathJax.js
 
 *.zip
+*.tar
+*.gz
 linksrc.ps1

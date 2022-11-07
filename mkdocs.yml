@@ -29,6 +29,7 @@ nav:
                 - 输入输出: .\Java\JAVA输入输出.md
                 - 系统编程: .\Java\JAVA系统编程.md
                 - Scala: .\Java\Scala.md
+                - Scala框架: .\Java\ScalaFrameworks.md
           - C#.NET:
                 - 编程基础: .\CSharp.NET\CSharp编程基础.md
                 - 输入输出: .\CSharp.NET\CSharp输入输出.md
@@ -43,13 +44,19 @@ nav:
                 - 标准库:
                       - 标准函数库: CC++\标准函数库.md
                       - 数学函数: .\CC++\数学函数.md
+          - JavaScript:
+                - JavaScript: .\JavaScript\JavaScript.md
+                - TypeScript: .\JavaScript\TypeScript.md
+                - 开发环境: .\JavaScript\JS开发环境.md
           - 开发工具:
                 - Git: .\开发环境\git.md
+                - 正则表达式: .\笔记\正则表达式.md
     - 操作系统:
           - Linux:
                 - 配置管理: ./Linux/Linux配置和管理.md
                 - Shell Script: ./Linux/Linux-Shell.md
                 - Linux发行版: ./Linux/Linux发行版.md
+                - 操作系统原理: .\Linux\操作系统原理.md
           - Windows:
                 - 配置管理: .\Windows\Windows配置管理.md
                 - Shell: .\Windows\Windows Shell.md
@@ -57,17 +64,20 @@ nav:
           - 应用软件:
                 - 程序开发: .\应用软件\程序开发软件.md
                 - 服务器管理: .\应用软件\服务器管理软件.md
-                - 网络访问: .\应用软件\网络访问工具.md
+                - 网络访问: .\应用软件\网络访问软件.md
                 - 网络服务: .\应用软件\网络服务软件.md
-                - 文档生成: .\应用软件\文档生成工具.md
-                - 文件处理: .\应用软件\文件处理工具.md
+                - 文档生成: .\应用软件\文档生成软件.md
+                - 文件处理: .\应用软件\文件处理软件.md
                 - 协作办公: .\应用软件\协作办公软件.md
+                - 知识管理: .\应用软件\知识管理软件.md
+                - 多媒体编辑: .\应用软件\多媒体编辑软件.md
     - 机器学习:
           - 机器学习实践:
                 - 机器学习实践: 机器学习/机器学习实践.md
                 - scikit-learn: ./机器学习/ScikitLearn.md
                 - TensorFlow: ./机器学习/TensorFlow.md
                 - Pytorch: ./机器学习/Pytorch.md
+                - 图神经网络: ./机器学习/图神经网络.md
           - 原理与算法: ./机器学习/机器学习原理与算法.md
           - 统计学习算法: ./机器学习/统计学习算法.md
     - 数据库:
@@ -75,7 +85,7 @@ nav:
                 - SQL语法: 数据库/SQL语法.md
                 - SQL DDL: ./数据库/SQL DDL.md
                 - SQL DML: ./数据库/SQL DML.md
-                - 数据类型: ./数据库/数据类型.md
+                - 数据类型: ./数据库/SQL数据类型.md
           - MySQL: ./数据库/MySQL.md
           - PostgreSQL: ./数据库/PostgreSQL.md
           - Hive SQL: ./数据库/HiveSQL.md
@@ -96,6 +106,7 @@ nav:
           - 数据标记语言:
                 - JSON and YAML: .\数据交换语言\JSON and YAML.md
                 - XML: .\数据交换语言\XML.md
+                - HTML: .\数据交换语言\HTML.md
           - 网络协议:
                 - HTTP: .\Protocols\http.md
                 - DNS: .\Protocols\DNS.md
@@ -114,7 +125,8 @@ nav:
 # https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins#navigation--page-building
 plugins:
     - search
-    - section-index # - mkdocs-section-index only works for first level section
+    - section-index # only works for first level section
+                    # pip install mkdocs-section-index
     - exclude: # - mkdocs-exclude ✔
           glob:
               - "*.tmp"
@@ -125,9 +137,9 @@ plugins:
               - "Java/Java语言与面向对象程序设计*"
           regex:
               - '.*\.(doc|ppt|xls|vsd)x?$'
-    - add-number: # mkdocs-add-number-plugin ❌
-          strict_mode: False
-          order: 2
+#     - add-number: # mkdocs-add-number-plugin ❌
+#           strict_mode: False
+#           order: 2
 
 # 引用块中包含的代码块不能正确被渲染。
 # 页面内目录支持(需要插入div块)
