@@ -1,0 +1,8 @@
+*.pdf
+*.zip
+*.gz
+*.tar
+*.rar
+Linux/tex/*
+Java/Java语言与面向对象程序设计_资料
+CSharp.NET/MediaInfo*
