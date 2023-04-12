@@ -4,6 +4,7 @@ set -e
 PROGDIR=$(dirname "$0") && cd "$PROGDIR"
 MODE='F644,D755'
 DATE=$(date +'%Y%m%d')
+WORKDIR='/home/gary/downloads'
 # MODE='u=rw,go=r,D+x'
 
 rsync -uav --delete --exclude-from='.rsync-ignore' \
@@ -20,3 +21,6 @@ for src in 'mdbook' 'mkdocs'; do
 done
 
 # +X: add executability (not consistent with chmod +X)
+rsync -uav --delete $WORKDIR/progbook-mdbook/* \
+      --exclude='README.md' \
+      $dir/../garylavayou.github.io/
