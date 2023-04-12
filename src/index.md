@@ -1,3 +1,0 @@
-# Home
-
-Learning Programming Book!

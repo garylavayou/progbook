@@ -9,7 +9,7 @@ site_description: programming notes for daily use.
 site_author: Gary Wang
 use_directory_urls: false
 nav:
-    - Home: index.md
+    - Home: preface.md
     - 程序设计语言:
           - Python:
                 - 编程基础: ./Python/Python编程基础.md
