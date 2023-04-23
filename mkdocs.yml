@@ -1,7 +1,7 @@
 site_name: Learning Programming Book
 # site_name: !ENV SITE_NAME
 # site_name: !ENV SITE_NAME, 'My default site name']
-theme: readthedocs
+theme: material
 docs_dir: src
 site_dir: site
 site_url: https://learn.program.com/mkdocs/
@@ -9,7 +9,7 @@ site_description: programming notes for daily use.
 site_author: Gary Wang
 use_directory_urls: false
 nav:
-    - Home: preface.md
+    - Home: index.md
     - 程序设计语言:
           - Python:
                 - 编程基础: ./Python/Python编程基础.md
@@ -37,7 +37,7 @@ nav:
                 - 数值计算: .\CSharp.NET\CSharp数值计算.md
                 - .NET开发: .\CSharp.NET\dotnet开发.md
           - C和C++:
-                - Modern C++: .\CC++\Modern C++.md
+                - Modern C++: ./CC++/Modern C++.md
                 - 开发环境: .\CC++\C++开发环境.md
                 - 数据容器: .\CC++\C++容器.md
                 - 输入输出: .\CC++\输入输出.md
@@ -115,14 +115,13 @@ nav:
                 - RPC: .\Protocols\RPC.md
     # - About: about.md
 
-# markdown_extensions:
+markdown_extensions:
+    - extra
 #     - smarty
 #     - toc:
 #         permalink: True
 #     - sane_lists
 
-# pip install mkdocs-foo-plugin
-# https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins#navigation--page-building
 plugins:
     - search
     - section-index # only works for first level section
@@ -140,6 +139,3 @@ plugins:
 #     - add-number: # mkdocs-add-number-plugin ❌
 #           strict_mode: False
 #           order: 2
-
-# 引用块中包含的代码块不能正确被渲染。
-# 页面内目录支持(需要插入div块)
