@@ -55,3 +55,22 @@ or output html files and then put it on other web servers.
 ```shell
 mkdocs build
 ```
+
+### [MkDocs Plugins](https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins#navigation--page-building)
+
+```bash
+pip install mkdocs-foo-plugin
+```
+
+> [Third party extensions](https://github.com/Python-Markdown/markdown/wiki/Third-Party-Extensions).
+
+## Issues
+
+### Current Issues of Using mdbook
+
+1. Cannot render math equations with `$...$` notations.
+
+### Current Issues of Using MkDocs
+
+1. 引用块中包含的代码块不能正确被渲染。
+2. files in hidden folders, such as ".assets", cannot be accessed.

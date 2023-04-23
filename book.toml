@@ -15,10 +15,18 @@ description = "The example book covers examples."
 # build-dir = "my-example-book"
 # create-missing = false
 
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
 # [preprocessor.pagetoc]
-# "mdbook-pagetoc" should be installed from "https://github.com/slowsage/mdbook-pagetoc".
+# install release from "https://github.com/slowsage/mdbook-pagetoc".
 
 [preprocessor.theme]
+# install release from https://github.com/zjp-CN/mdbook-theme
+# avoid: repeated building when "mdbook serve":
+# 1. run "mdbook build" once and set "turn-off = true"
+# 2. run "mdbook build" once and comment out this section
+# 3. add "theme" tp ".gitignore" to skip "mdbook watch" on theme dir.
 pagetoc        = true
 turn-off       = true
 content-max-width         = "77%"
@@ -53,7 +61,8 @@ mathjax-support = true
 # additional-css = ["theme/css/style.css"]
 # additional-js = ["theme/sidebar.js"]
 additional-css = ["theme/pagetoc.css"]
-additional-js  = ["theme/pagetoc.js", "theme/MathJax.js"]
+# not sure "MathJax.js"'s functionality
+additional-js  = ["theme/pagetoc.js", "theme/mermaid.min.js", "theme/mermaid-init.js", "theme/MathJax.js"] 
 no-section-label = true
 # git-repository-url = "https://github.com/rust-lang/mdBook"
 # git-repository-icon = "fa-github"

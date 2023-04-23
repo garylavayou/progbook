@@ -1,6 +1,6 @@
 # Summary
 
-[Prefix](./prefix.md)
+[Prefix](./index.md)
 
 ---
 

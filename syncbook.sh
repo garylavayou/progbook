@@ -21,6 +21,6 @@ for src in 'mdbook' 'mkdocs'; do
 done
 
 # +X: add executability (not consistent with chmod +X)
-rsync -uav --delete $WORKDIR/progbook-mdbook/* \
-      --exclude='README.md' \
-      $dir/../garylavayou.github.io/
+# rsync -uav --delete $WORKDIR/progbook-mdbook/* \
+#       --exclude='README.md' \
+#       $dir/../garylavayou.github.io/
