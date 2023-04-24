@@ -1,24 +1,29 @@
 #!/bin/sh
+# In order to deploy the build, I need to filter out files that is not desired for publish.
+# 
+# Related issues:
+#  - https://github.com/rust-lang/mdBook/issues/1187
+#  - https://github.com/rust-lang/mdBook/pull/1908
+
 set -e
 # MODE='ugo+r,u+w,go-w,Fugo-x'
 PROGDIR=$(dirname "$0") && cd "$PROGDIR"
 MODE='F644,D755'
 DATE=$(date +'%Y%m%d')
-WORKDIR='/home/gary/downloads'
 # MODE='u=rw,go=r,D+x'
+src=mdbook
 
 rsync -uav --delete --exclude-from='.rsync-ignore' \
       --chmod=$MODE \
-      book/* /tmp/progbook-mdbook/
-rsync -uav --delete --exclude-from='.rsync-ignore' \
-      --chmod=$MODE \
-      site/* /tmp/progbook-mkdocs/
+      book/* /tmp/progbook-$src/
 
+# rsync -uav --delete --exclude-from='.rsync-ignore' \
+#       --chmod=$MODE \
+#       site/* /tmp/progbook-mkdocs/
 dir=$(pwd)
 
-for src in 'mdbook' 'mkdocs'; do
-     tar -czf $dir/progbook-$src-$DATE.tar.gz -C /tmp progbook-$src
-done
+ln -sf --no-dereference /tmp/progbook-$src /tmp/progbook-$src-$DATE
+tar -czf $dir/progbook-$src-$DATE.tar.gz -C /tmp --dereference progbook-$src-$DATE
 
 # +X: add executability (not consistent with chmod +X)
 # rsync -uav --delete $WORKDIR/progbook-mdbook/* \
