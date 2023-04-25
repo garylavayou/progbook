@@ -124,8 +124,8 @@ markdown_extensions:
 
 plugins:
     - search
-    - section-index # only works for first level section
-                    # pip install mkdocs-section-index
+    # specify the target link for section title
+    - section-index # pip install mkdocs-section-index
     - exclude: # - mkdocs-exclude ✔
           glob:
               - "*.tmp"
