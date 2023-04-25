@@ -11,8 +11,8 @@ Make sure all referred Markdown documents in `src/SUMMARY.md` (mdBook) or `mkdoc
 We use a `sources.conf` file to track the real path of our documents, so that no need to move source documents into the `src` folder.
 
 ```
-/path/to/real/source1     source1
-/path/to/real/source2     source2
+/path/to/real/source1 # -> ln -sf /path/to/real/source1 src/source1
+/path/to/real/source2 # -> ln -sf /path/to/real/source2 src/source2
 ......
 ```
 

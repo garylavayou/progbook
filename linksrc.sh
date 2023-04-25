@@ -1,4 +1,10 @@
 #!/bin/bash
+
+# scan sources
+# for l in /mnt/d/Users/gary/Documents/程序设计/*; do
+#   echo $(realpath $l); 
+# done
+
 set -e
 PROGDIR=$(dirname "$0") && cd "$PROGDIR"
 mapfile -t lines < sources.conf
@@ -11,4 +17,3 @@ for source in "${lines[@]}"; do
     echo "[$source] -> [$target]"
     ln -svf --no-dereference "$source" "src/$target"
 done
-http://127.0.0.1:8000/mkdocs/CC%2B%2B/Modern%20C++.assets/image-20210212200114257.png
