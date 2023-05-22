@@ -21,10 +21,10 @@ src/Protocols
 src/Python
 src/Perl
 src/Windows
-theme/css/style.css
-theme/sidebar.js
-theme/pagetoc.js
-theme/MathJax.js
+# theme/css/style.css
+# theme/sidebar.js
+# theme/pagetoc.js
+# theme/MathJax.js
 
 *.zip
 *.tar

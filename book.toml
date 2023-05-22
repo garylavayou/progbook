@@ -57,8 +57,9 @@ mathjax-support = true
 # limitation will be lifted soon.
 # copy-fonts = true
 additional-css = ["theme/pagetoc.css"]
-# not sure "MathJax.js"'s functionality
-additional-js  = ["theme/pagetoc.js", "theme/mermaid.min.js", "theme/mermaid-init.js"] # "theme/MathJax.js"
+# Additional javascript will be copied to the build directory.
+# NOTE: not sure "MathJax.js"'s functionality
+additional-js  = ["theme/pagetoc.js", "theme/mermaid.min.js", "theme/mermaid-init.js", "theme/MathJax.js"]  
 no-section-label = true
 # git-repository-url = "https://github.com/rust-lang/mdBook"
 # git-repository-icon = "fa-github"
