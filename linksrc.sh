@@ -9,7 +9,8 @@ set -e
 PROGDIR=$(dirname "$0") && cd "$PROGDIR"
 mapfile -t lines < sources.conf
 for source in "${lines[@]}"; do
-    source=$(sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//' <<< "$source")
+    # remove leading and trailing spaces for each line. 
+    source=$(sed -E 's/#.+//;s/^[[:blank:]]*//;s/[[:blank:]]*$//' <<< "$source")
     if [[ -z "$source" || $source =~ ^# ]]; then
         continue
     fi
