@@ -64,6 +64,13 @@ pip install mkdocs-foo-plugin
 
 > [Third party extensions](https://github.com/Python-Markdown/markdown/wiki/Third-Party-Extensions).
 
+## Usage of Docsify
+
+```shell
+ln -sf index.md src/README.md  # or create a README file
+docsify serve src
+```
+
 ## Issues
 
 ### Current Issues of Using mdbook
