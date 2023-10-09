@@ -2,104 +2,134 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css" />
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <!-- mermaid support -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css" />
 </head>
 
 <body>
-  <nav></nav>
-  <div id="app">Loading...Please wait.</div>
-  <script>
-    window.$docsify = {
-      name: '',
-      loadSidebar: true,
-      loadNavbar: true,
-      maxLevel: 4,
-      subMaxLevel: 2,
-      sidebarDisplayLevel: 2, // set sidebar display level
-      relativePath: true,
-      alias: {
-        '/.*/_sidebar.md': '/_sidebar.md'
-      }, //  specify alias to avoid unnecessary fallback.
-      latex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']], // default
-        displayMath: [['$$', '$$']],              // default
-      },
-      autoHeaders: {
-        separator: 'decimal',
-        levels: {
-          start: '2',
-          finish: '4'
-        },
-        scope: '#main'
-      },
-      progress: {
-        position: "top",
-        color: "var(--theme-color,#42b983)",
-        height: "3px",
-      },
-      repo: ''
-    }
-  </script>
-  <!-- Docsify v4 -->
-  <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
-  <script src="docsify-plugins/autoheaders.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
-  <!-- mermaid support -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-  <!-- latex math equation support 
+    <nav></nav>
+    <div id="app">Loading...Please wait.</div>
+    <script>
+        var num = 0;
+        mermaid.initialize({ startOnLoad: false });
+
+        window.$docsify = {
+            name: "",
+            loadSidebar: true,
+            loadNavbar: true,
+            maxLevel: 4,
+            subMaxLevel: 2,
+            sidebarDisplayLevel: 2, // set sidebar display level
+            relativePath: true,
+            alias: {
+                "/.*/_sidebar.md": "/_sidebar.md",
+                "/.*/_navbar.md": "/_navbar.md",
+            }, //  specify alias to avoid unnecessary fallback.
+            latex: {
+                inlineMath: [
+                    ["$", "$"],
+                    ["\\(", "\\)"],
+                ], // default
+                displayMath: [["$$", "$$"]], // default
+            },
+            autoHeaders: {
+                separator: "decimal",
+                levels: {
+                    start: "2",
+                    finish: "4",
+                },
+                scope: "#main",
+            },
+            tabs: {
+                persist: true, // default
+                sync: true, // default
+                theme: "classic", // default
+                tabComments: false, // default [true]
+                tabHeadings: true, // default
+            },
+            progress: {
+                position: "top",
+                color: "var(--theme-color,#42b983)",
+                height: "3px",
+            },
+            markdown: {
+                renderer: {
+                    code: function (code, lang) {
+                        if (lang === "mermaid") {
+                            return (
+                                '<div class="mermaid">' +
+                                mermaid.render("mermaid-svg-" + num++, code) +
+                                "</div>"
+                            );
+                        }
+                        return this.origin.code.apply(this, arguments);
+                    },
+                },
+            },
+            repo: "",
+        };
+    </script>
+    <!-- Docsify v4 -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+    <!-- Docsify plugins -->
+    <script src="docsify-plugins/autoheaders.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+    <!-- latex math equation support 
     You should put docsify-latex plugin script below docsify and LaTeX 
     display engine scripts, because plugin script depends on them.
   -->
-  <!-- LaTeX display engine -->
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <!--  docsify-latex plugin -->
-  <script src="https://cdn.jsdelivr.net/npm/docsify-latex@0"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-progress@latest/dist/progress.min.js"></script>
-  <!-- language highlighting support -->
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-aspnet.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-csharp.min.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-cpp.min.js"></script> -->
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-cmake.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-csv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-cypher.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-diff.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-docker.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-dot.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-go.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-graphql.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-http.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-ini.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-julia.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-latex.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-makefile.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-markdown.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-matlab.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-mermaid.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-mongodb.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-nginx.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-powershell.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-properties.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-regex.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-rest.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-rust.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-scala.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-sql.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-systemd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-toml.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-typescript.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-uri.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-yaml.min.js"></script>
+    <!-- LaTeX display engine -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!--  docsify-latex plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify-latex@0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-progress@latest/dist/progress.min.js"></script>
+    <!-- language highlighting support -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-aspnet.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-csharp.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-cpp.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-cmake.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-csv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-cypher.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-diff.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-docker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-dot.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-go.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-graphql.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-http.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-ini.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-julia.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-latex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-makefile.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-markdown.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-matlab.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-mongodb.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-nginx.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-powershell.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-properties.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-regex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-rest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-rust.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-scala.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-sql.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-systemd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-toml.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-typescript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-uri.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-yaml.min.js"></script>
 </body>
 
 </html>

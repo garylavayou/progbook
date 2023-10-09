@@ -21,9 +21,10 @@ We use a `sources.conf` file to track the real path of our documents, so that no
 ### Install mdBook
 
 ```bash
-version="v0.4.28"
+version="v0.4.31"
 wget "https://github.com/rust-lang/mdBook/releases/download/${version}/mdbook-${version}-x86_64-unknown-linux-gnu.tar.gz" --continue -O /tmp/mdbook.tar.gz
 mkdir -p ~/bin && tar -xf /tmp/mdbook.tar.gz -C ~/bin
+mdbook --version
 ```
 
 ### Build the Book

@@ -26,7 +26,7 @@ command = "mdbook-mermaid"
 # avoid: repeated building when "mdbook serve":
 # 1. run "mdbook build" once and set "turn-off = true"
 # 2. run "mdbook build" once and comment out this section
-# 3. add "theme" tp ".gitignore" to skip "mdbook watch" on theme dir.
+# 3. add "theme" to ".gitignore" to skip "mdbook watch" on theme dir.
 pagetoc        = true
 turn-off       = true
 content-max-width         = "77%"

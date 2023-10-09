@@ -1,5 +1,6 @@
 #!/bin/sh
-# In order to deploy the build, I need to filter out files that is not desired for publish.
+# In order to deploy the build, I need to filter out files that is not desired for 
+# publish.
 # 
 # Related issues:
 #  - https://github.com/rust-lang/mdBook/issues/1187
@@ -22,9 +23,9 @@ rsync -uav --delete --exclude-from='.rsync-ignore' \
 #       site/* /tmp/progbook-mkdocs/
 dir=$(pwd)
 
-ln -svf --no-dereference /tmp/progbook-$src /tmp/progbook-$src-$DATE
-tar -czvf $dir/progbook-$src-$DATE.tar.gz -C /tmp --dereference progbook-$src-$DATE
-
+ln -svf --no-dereference "/tmp/progbook-$src" "/tmp/progbook-$src-$DATE"
+tar -czvf "$dir/progbook-$src-$DATE.tar.gz" -C /tmp --dereference "progbook-$src-$DATE"
+ls -lh "$dir/progbook-$src-$DATE.tar.gz"
 # +X: add executability (not consistent with chmod +X)
 # rsync -uav --delete $WORKDIR/progbook-mdbook/* \
 #       --exclude='README.md' \
