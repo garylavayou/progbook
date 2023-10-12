@@ -5,6 +5,8 @@ Use mdBook/MkDocs to generate a book from my programming notes.
 This repository is used for learning how to use [mdBook](https://github.com/rust-lang/mdBook)/MkDocs to generate a nice online book.
 The content sources are not contained in this repository.
 
+About writing in [Markdown](https://www.markdownguide.org/).
+
 ## Configure the Source
 
 Make sure all referred Markdown documents in `src/SUMMARY.md` (mdBook) or `mkdocs.yml` (MkDocs) are put into the `src` folder, or softly linked from the `src` folder.
@@ -77,8 +79,16 @@ docsify serve src
 ### Current Issues of Using mdbook
 
 1. Cannot render math equations with `$...$` notations.
+   solved with [`mdbook-katex`](https://github.com/lzanini/mdbook-katex).
+
+1. Cannot properly render display equations in quote text.
+
+1. KaTeX missing support for some latex commands, such as `\abs`.
+
+1. KaTeX not support `\label` and `\ref`.
+   - https://github.com/KaTeX/KaTeX/issues/2798
+   - https://github.com/KaTeX/KaTeX/issues/2003
 
 ### Current Issues of Using MkDocs
 
 1. 引用块中包含的代码块不能正确被渲染。
-2. files in hidden folders, such as ".assets", cannot be accessed.

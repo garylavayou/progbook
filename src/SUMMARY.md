@@ -17,13 +17,13 @@
   - [数值计算](./Python/Python数值计算.md)
   - [系统编程](./Python/Python系统编程.md)
   - [高级编程](./Python/Python高级编程.md)
-- [Java](./Java/JAVA编程基础.md)
-  - [编程基础](./Java/JAVA编程基础.md)
+- [Java](./Java/Java编程基础.md)
+  - [编程基础](./Java/Java编程基础.md)
   - [开发环境](./Java/Java开发环境.md)
     - [Maven 配置](./Java/Maven%20POM.md)
-  - [数据类型](./Java/JAVA数据类型.md)
-  - [输入输出](./Java/JAVA输入输出.md)
-  - [系统编程](./Java/JAVA系统编程.md)
+  - [数据类型](./Java/Java数据类型.md)
+  - [输入输出](./Java/Java输入输出.md)
+  - [系统编程](./Java/Java系统编程.md)
   <!-- [Java编程应用] -->
   <!-- [Java高级编程] -->
   - [Scala](./Java/Scala.md)

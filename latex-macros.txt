@@ -1,0 +1,7 @@
+\op:{\operatorname{#1}}
+\opl:{\operatornamewithlimits{#1}}
+\mb:{\mathbf{#1}}
+\mr:{\mathrm{#1}}
+\bm:{\boldsymbol{#1}}
+\laplacian:{\mathcal{L}(#1)}
+\label:{\#\textrm{#1}}

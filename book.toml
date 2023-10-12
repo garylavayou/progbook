@@ -18,6 +18,11 @@ description = "The example book covers examples."
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
 
+[preprocessor.katex]
+# https://katex.org/docs/supported.html
+after = ["links"]
+macros = "latex-macros.txt"
+
 # [preprocessor.pagetoc]
 # install release from "https://github.com/slowsage/mdbook-pagetoc".
 
@@ -50,7 +55,7 @@ sidebar-font-size        = "1rem"
 # default-theme = "light"
 # preferred-dark-theme = "navy"
 # curly-quotes = true
-mathjax-support = true
+# mathjax-support = true
 # Note: The usual delimiters MathJax uses are not yet supported. 
 # You can't currently use $$ ... $$ as delimiters and the \[ ... \] 
 # delimiters need an extra backslash to work. Hopefully this 
@@ -59,7 +64,8 @@ mathjax-support = true
 additional-css = ["theme/pagetoc.css"]
 # Additional javascript will be copied to the build directory.
 # NOTE: not sure "MathJax.js"'s functionality
-additional-js  = ["theme/pagetoc.js", "theme/mermaid.min.js", "theme/mermaid-init.js", "theme/MathJax.js"]  
+# "theme/MathJax.js"
+additional-js  = ["theme/pagetoc.js", "theme/mermaid.min.js", "theme/mermaid-init.js"]  
 no-section-label = true
 # git-repository-url = "https://github.com/rust-lang/mdBook"
 # git-repository-icon = "fa-github"
@@ -67,3 +73,6 @@ no-section-label = true
 # site-url = "/example-book/"
 # cname = "myproject.rs"
 # input-404 = "not-found.md"
+
+[output.html.search]
+enable = false  # addres [searchindex.json is very large]
