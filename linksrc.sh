@@ -5,9 +5,12 @@
 #   echo $(realpath $l); 
 # done
 
+$SOURCE_DIR=${SOURCE_DIR:-'src'}
+
 set -e
 PROGDIR=$(dirname "$0") && cd "$PROGDIR"
 mapfile -t lines < sources.conf
+mkdir -p ${SOURCE_DIR}
 for source in "${lines[@]}"; do
     # remove leading and trailing spaces for each line. 
     source=$(sed -E 's/#.+//;s/^[[:blank:]]*//;s/[[:blank:]]*$//' <<< "$source")
@@ -15,6 +18,5 @@ for source in "${lines[@]}"; do
         continue
     fi
     target=$(basename "$source")
-    echo "[$source] -> [$target]"
-    ln -svf --no-dereference "$source" "src/$target"
+    ln -svf --no-dereference "$source" "${SOURCE_DIR}/$target"
 done

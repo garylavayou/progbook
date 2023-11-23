@@ -3,7 +3,9 @@
         "docsify",
         "doxygen",
         "katex",
+        "mathjax",
         "mdbook",
+        "prismjs",
         "progbook",
         "Pyspark",
         "scikit"

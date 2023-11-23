@@ -1,0 +1,26 @@
+{
+  "name": "docsify-plugins",
+  "version": "1.0.0",
+  "description": "Local node packages caches to store docsify plugins.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "docsify",
+    "plugin"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sy-records/docsify-footnotes": "^1.0.2",
+    "docsify": "^4.13.1",
+    "docsify-latex": "^0.5.2",
+    "docsify-progress": "^1.0.3",
+    "docsify-sidebar-collapse": "^1.3.5",
+    "docsify-tabs": "^1.6.0",
+    "mathjax": "^3.2.2",
+    "mermaid": "^9.4.3",
+    "prismjs": "^1.29.0"
+  }
+}

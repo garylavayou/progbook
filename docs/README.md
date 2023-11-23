@@ -1,10 +1,4 @@
-# Summary
-
-[目录](./index.md)
-
----
-
-<!-- tree -P '*.md' -->
+# 目录 <!-- {docsify-ignore-all} -->
 
 ## 程序设计语言
 

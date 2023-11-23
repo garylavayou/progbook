@@ -1,6 +1,6 @@
 # progbook
 
-Use mdBook/MkDocs to generate a book from my programming notes.
+Use mdBook/MkDocs/Docsify to generate a book from my programming notes.
 
 This repository is used for learning how to use [mdBook](https://github.com/rust-lang/mdBook)/MkDocs to generate a nice online book.
 The content sources are not contained in this repository.
@@ -34,6 +34,7 @@ mdbook --version
 run html service locally to serve documents:
 
 ```shell
+./linksrc.sh
 mdbook serve
 ```
 
@@ -69,9 +70,18 @@ pip install mkdocs-foo-plugin
 
 ## Usage of Docsify
 
+### Install Docsify
+
 ```shell
-ln -sf index.md src/README.md  # or create a README file
-docsify serve src
+npm i docsify-cli -g
+```
+
+### Compile Document Source via Docsify
+
+```shell
+SOURCE_DIR=docs ./linksrc.sh
+ln -sf index.md ${SOURCE_DIR}/README.md  # or create a README file
+docsify serve ${SOURCE_DIR}
 ```
 
 ## Issues

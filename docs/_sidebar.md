@@ -1,4 +1,4 @@
-[Home](/index.md)
+[首页](/README.md)
 
 <!-- Issue 1: relative path in sidebar changes its base path
      when the opening document changes.
@@ -69,11 +69,11 @@
     - [TypeScript](/JavaScript/TypeScript.md)
     - [开发环境](/JavaScript/JS开发环境.md)
 
-
   - [开发工具]()
     - [Git](/开发环境/git.md)
     - [正则表达式](/笔记/正则表达式.md)
-
+    - [Markdown](/阅读与写作/markdown.md)
+    - [文档发布](/阅读与写作/pandoc.md)
 
 ---
 

@@ -21,10 +21,35 @@ src/Protocols
 src/Python
 src/Perl
 src/Windows
+
+docs/笔记
+docs/服务器
+docs/机器学习
+docs/开发环境
+docs/数据交换语言
+docs/数据库
+docs/应用软件
+docs/图形界面
+docs/数据结构
+docs/算法
+docs/阅读与写作
+docs/CC++
+docs/CSharp.NET
+docs/Java
+docs/JavaScript
+docs/Linux
+docs/Matlab
+docs/NewLang
+docs/Protocols
+docs/Python
+docs/Perl
+docs/Windows
 # theme/css/style.css
 # theme/sidebar.js
 # theme/pagetoc.js
 # theme/MathJax.js
+
+node_modules
 
 *.zip
 *.tar
