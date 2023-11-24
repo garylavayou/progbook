@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!-- setting the main language of the site -->
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <!-- mermaid support -->
+    <link rel="stylesheet" href="./docsify-themes/mermaid.min.css"/>
+    <script src="./docsify-plugins/node_modules/mermaid/dist/mermaid.min.js"></script>
+    <link rel="stylesheet" href="./docsify-plugins/node_modules/docsify/lib/themes/vue.css" />
+    <link rel="stylesheet" href="./docsify-plugins/node_modules/docsify-sidebar-collapse/dist/sidebar.min.css" />
+</head>
+
+<body>
+    <nav></nav>
+    <div id="app">Loading...Please wait.</div>
+    <script>
+        var num = 0;
+        mermaid.initialize({ startOnLoad: false });
+
+        window.$docsify = {
+            name: "ProgBook",
+            loadSidebar: true,
+            loadNavbar: true,
+            maxLevel: 4,
+            subMaxLevel: 2,
+            sidebarDisplayLevel: 2, // set sidebar display level
+            relativePath: true,
+            alias: {
+                "/.*/_sidebar.md": "/_sidebar.md",
+                "/.*/_navbar.md": "/_navbar.md",
+            }, //  specify alias to avoid unnecessary fallback.
+            latex: {
+                inlineMath: [
+                    ["$", "$"],
+                    ["\\(", "\\)"],
+                ], // default
+                displayMath: [["$$", "$$"]], // default
+            },
+            autoHeaders: {
+                separator: "decimal",
+                levels: {
+                    start: "2",
+                    finish: "4",
+                },
+                scope: "#main",
+            },
+            tabs: {
+                persist: true, // default
+                sync: true, // default
+                theme: "classic", // default
+                tabComments: false, // default [true]
+                tabHeadings: true, // default
+            },
+            progress: {
+                position: "top",
+                color: "var(--theme-color,#42b983)",
+                height: "3px",
+            },
+            markdown: {
+                renderer: {
+                    code: function (code, lang) {
+                        if (lang === "mermaid") {
+                            return (
+                                '<div class="mermaid">' +
+                                mermaid.render("mermaid-svg-" + num++, code) +
+                                "</div>"
+                            );
+                        }
+                        return this.origin.code.apply(this, arguments);
+                    },
+                },
+            },
+            repo: "",
+        };
+    </script>
+    <!-- Docsify v4 -->
+    <script src="./docsify-plugins/node_modules/docsify/lib/docsify.js"></script>
+    <!-- Docsify plugins -->
+    <script src="./docsify-plugins/autoheaders.js"></script>
+    <script src="./docsify-plugins/node_modules/docsify-tabs/dist/docsify-tabs.js"></script>
+    <script src="./docsify-plugins/node_modules/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@sy-records/docsify-footnotes/lib/index.min.js"></script> -->
+    <!-- latex math equation support 
+    You should put docsify-latex plugin script below docsify and LaTeX 
+    display engine scripts, because plugin script depends on them.
+  -->
+    <!-- LaTeX display engine -->
+    <script src="./docsify-plugins/node_modules/mathjax/es5/tex-mml-chtml.js"></script>
+    <!--  docsify-latex plugin -->
+    <script src="./docsify-plugins/node_modules/docsify-latex/dist/docsify-latex.js"></script>
+    <script src="./docsify-plugins/node_modules/docsify-progress/dist/progress.js"></script>
+    <script src="./docsify-plugins/node_modules/docsify-image-caption/dist/docsify-image-caption.js"></script>
+    <!-- language highlighting support -->
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-aspnet.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-bash.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-csharp.min.js"></script>
+    <!-- <script src="./docsify-plugins/node_modules/prismjs/components/prism-cpp.min.js"></script> -->
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-cmake.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-csv.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-cypher.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-diff.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-docker.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-dot.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-go.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-graphql.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-http.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-ini.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-java.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-json.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-julia.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-latex.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-makefile.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-markdown.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-matlab.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-mermaid.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-mongodb.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-nginx.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-powershell.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-properties.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-python.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-regex.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-rest.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-rust.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-scala.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-sql.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-systemd.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-toml.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-typescript.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-uri.min.js"></script>
+    <script src="./docsify-plugins/node_modules/prismjs/components/prism-yaml.min.js"></script>
+</body>
+
+</html>

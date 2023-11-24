@@ -8,6 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="description" content="Description" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <script>
+        if (typeof navigator.serviceWorker !== 'undefined') {
+          navigator.serviceWorker.register('sw.js')
+        }
+    </script>
     <!-- mermaid support -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js"></script>
@@ -84,7 +89,7 @@
     <script src="docsify-plugins/autoheaders.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
     <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@sy-records/docsify-footnotes/lib/index.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@sy-records/docsify-footnotes/lib/index.min.js"></script> -->
     <!-- latex math equation support 
     You should put docsify-latex plugin script below docsify and LaTeX 
     display engine scripts, because plugin script depends on them.
@@ -94,6 +99,7 @@
     <!--  docsify-latex plugin -->
     <script src="https://cdn.jsdelivr.net/npm/docsify-latex@0"></script>
     <script src="https://cdn.jsdelivr.net/npm/docsify-progress@latest/dist/progress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/h-hg/docsify-image-caption/dist/docsify-image-caption.min.js"></script>
     <!-- language highlighting support -->
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-aspnet.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>

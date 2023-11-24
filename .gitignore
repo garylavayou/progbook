@@ -50,6 +50,7 @@ docs/Windows
 # theme/MathJax.js
 
 node_modules
+.build
 
 *.zip
 *.tar

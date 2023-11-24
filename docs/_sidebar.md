@@ -7,6 +7,12 @@
      documents.
   -->
 
+<!-- Issue 4: Relative paths in HTML elements are not converted to 
+     unified absolute URLs
+
+     Fix: convert source to replace the relative path in embedded HTML elements.
+-->
+
 <!-- Issue 2: sidebar file should not contain headers, otherwise it these
      headers will be repeatedly added to the sub-nodes when `/_sidebar.md`
      is shared by all sub-folders.
@@ -20,6 +26,10 @@
 
      Fix: no need to fix as this is the expected behavior.
     -->
+
+<!-- Issue 5: footnote plugin coincide with regex pattern [^abc]. -->
+
+<!-- Issue 6: highlight block ==...== does not work. -->
 ---
 
 - 程序设计语言
@@ -71,6 +81,7 @@
 
   - [开发工具]()
     - [Git](/开发环境/git.md)
+    - [GitLab CI/CD](/开发环境/gitlab-cicd.md)
     - [正则表达式](/笔记/正则表达式.md)
     - [Markdown](/阅读与写作/markdown.md)
     - [文档发布](/阅读与写作/pandoc.md)
