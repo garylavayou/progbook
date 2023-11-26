@@ -13,9 +13,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@h-hg/docsify-image-caption": "github:h-hg/docsify-image-caption",
     "@sy-records/docsify-footnotes": "^1.0.2",
     "docsify": "^4.13.1",
-    "docsify-image-caption": "^1.0.0",
     "docsify-latex": "^0.5.2",
     "docsify-progress": "^1.0.3",
     "docsify-sidebar-collapse": "^1.3.5",

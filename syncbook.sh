@@ -1,7 +1,10 @@
 #!/bin/sh
+# Usage:
+#     SOURCE=mdbook ./syncbook.sh
+# 
 # In order to deploy the build, I need to filter out files that is not desired for
 # publish.
-#
+# 
 # Related issues:
 #  - https://github.com/rust-lang/mdBook/issues/1187
 #  - https://github.com/rust-lang/mdBook/pull/1908

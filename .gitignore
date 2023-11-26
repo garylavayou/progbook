@@ -51,6 +51,13 @@ docs/Windows
 
 node_modules
 .build
+docsify-fonts
+docs/docsify-themes/fonts
+docs/docsify-themes/buble.css
+docs/docsify-themes/dark.css
+docs/docsify-themes/dolphin.css
+docs/docsify-themes/pure.css
+docs/docsify-themes/vue.css
 
 *.zip
 *.tar

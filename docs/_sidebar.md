@@ -61,7 +61,7 @@
     - [编程基础](/CSharp.NET/CSharp编程基础.md)
     - [输入输出](/CSharp.NET/CSharp输入输出.md)
     - [数据容器](/CSharp.NET/CSharp数据容器.md)
-    - [数值计算](/CSharp.NET/CSharp数值计算.md)
+    <!-- - [数值计算](/CSharp.NET/CSharp数值计算.md) -->
     - [.NET 开发](/CSharp.NET/dotnet开发.md)
 
   - [C and C++](/CC++/Modern%20C++.md)
