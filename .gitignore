@@ -58,7 +58,9 @@ docs/docsify-themes/dark.css
 docs/docsify-themes/dolphin.css
 docs/docsify-themes/pure.css
 docs/docsify-themes/vue.css
+docsify
 
 *.zip
 *.tar
 *.gz
+*.gen.md

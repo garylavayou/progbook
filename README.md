@@ -18,15 +18,30 @@ We use a `sources.conf` file to track the real path of our documents, so that no
 ......
 ```
 
+### Find Your Documents
+
+List all the markdown files in the folder:
+
+```shell
+tree -l -P '*.md' src > mydocs.$(date +%F).txt
+```
+
+Then, add them to your book specification files.
+You can save the result, and then next time compare it with new results to find what changes.
+
 ## Usage of mdBook
 
 ### Install mdBook
 
 ```bash
-version="v0.4.31"
+version="v0.4.36"
 wget "https://github.com/rust-lang/mdBook/releases/download/${version}/mdbook-${version}-x86_64-unknown-linux-gnu.tar.gz" --continue -O /tmp/mdbook.tar.gz
 mkdir -p ~/bin && tar -xf /tmp/mdbook.tar.gz -C ~/bin
 mdbook --version
+version="v0.5.9"
+wget "https://github.com/lzanini/mdbook-katex/releases/download/${version}/mdbook-katex-${version}-x86_64-unknown-linux-gnu.tar.gz" --continue -O /tmp/mdbook-katex.tar.gz
+tar -xf /tmp/mdbook-katex.tar.gz -C ~/bin
+mdbook-katex --version
 ```
 
 ### Build the Book
@@ -34,6 +49,7 @@ mdbook --version
 run html service locally to serve documents:
 
 ```shell
+python bin/checksource.py
 ./linksrc.sh
 mdbook serve
 ```
@@ -79,9 +95,12 @@ npm i docsify-cli -g
 ### Compile Document Source via Docsify
 
 ```shell
-SOURCE_DIR=docs ./linksrc.sh
-ln -sf index.md ${SOURCE_DIR}/README.md  # or create a README file
-docsify serve ${SOURCE_DIR}
+python bin/checksource.py --style docsify > docs/README.gen.md
+python bin/checksource.py --style docsify_sidebar > docs/_sidebar.gen.md
+export SOURCE_DIR=docs 
+./linksrc.sh
+./bin/docsify-compile.py --clean --offline
+docsify serve .build
 ```
 
 ## Issues
@@ -102,3 +121,7 @@ docsify serve ${SOURCE_DIR}
 ### Current Issues of Using MkDocs
 
 1. 引用块中包含的代码块不能正确被渲染。
+
+### Current Issues of Using Docsify
+
+1. `Error: Diagram mindmap already registered.`.

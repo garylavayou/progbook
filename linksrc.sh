@@ -5,7 +5,7 @@
 #   echo $(realpath $l); 
 # done
 
-$SOURCE_DIR=${SOURCE_DIR:-'src'}
+SOURCE_DIR=${SOURCE_DIR:-'src'}
 
 set -e
 PROGDIR=$(dirname "$0") && cd "$PROGDIR"

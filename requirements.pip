@@ -1,0 +1,4 @@
+# condapack --file requirements.pip progbook
+pyyaml
+
+mkdocs

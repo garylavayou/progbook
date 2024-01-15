@@ -5,12 +5,22 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
             "name": "docsify-compile",
             "type": "python",
             "request": "launch",
             "program": "bin/docsify-compile.py",
             "console": "integratedTerminal",
-            "args": ["--offline"],
+            "args": [
+                "--offline"
+            ],
             "justMyCode": true
         }
     ]

@@ -37,27 +37,33 @@ parser.add_argument(
     "--clean", action="store_true", help="clean the output before building."
 )
 parser.add_argument(
-    '--source', action='store', type=str,default='docs',
-    help='source directory of markdown files.'
+    "--source",
+    action="store",
+    type=str,
+    default="docs",
+    help="source directory of markdown files.",
 )
 parser.add_argument(
-    '--target', action='store', type=str, default='.build',
-    help='target directory to save the processed markdown and related files.'
+    "--target",
+    action="store",
+    type=str,
+    default=".build",
+    help="target directory to save the processed markdown and related files.",
 )
 options = parser.parse_args(args=sys.argv[1:])
 
 source_dir = options.source
 target_dir = options.target
-filters = ["\.(md|png|jpe?g|svg|webp|gif)", r"\.nojekyll"]
+filters = [r"\.(md|png|jpe?g|svg|webp|gif)", r"\.nojekyll", r"sw\.js"]
 if options.offline:
     filters.extend(["docsify-fonts", "docsify-plugins"])
 else:
-    filters.extend([r"index\.html", r"sw\.js"])
+    filters.extend([r"index\.html"])
 # reverse_filters have higher priority that filters
 reverse_filters = [
-    "/\.~",
-    "\.(?:obsidian)",
-    "(?:quarto_files|node_modules)",  # node_modules contains many files, sync it in one command
+    r"/\.~",
+    r"\.(?:obsidian)",
+    r"(?:quarto_files|node_modules)",  # node_modules contains many files, sync it in one command
 ]
 if options.clean and os.path.exists(target_dir):
     shutil.rmtree(target_dir, ignore_errors=False)
@@ -87,7 +93,7 @@ for dirpath, _, filenames in os.walk(source_dir, followlinks=True):
             continue
         target_file = filepath.replace(source_dir, target_dir, 1)
         init_dir(target_file)
-        if filepath.endswith(".md"):
+        if filepath.endswith(".md"):  # TODO only processing new/newer files
             # prepend path prefix for relative path images
             #   'src = "path/to/image.png"' -> 'src = "{prefix}/path/to/image.png"'
             # exceptions:
@@ -141,3 +147,7 @@ if options.offline:
                 """
             print(f"{filepath} -> {target_file}")
             exec(replace_command)
+else:
+    # sync the extra local JS files.
+    # target directory will be automatically created.
+    exec(f"rsync -uav {source_dir}/docsify-plugins/*.js {target_dir}/docsify-plugins/")
