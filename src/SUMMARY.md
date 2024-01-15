@@ -19,8 +19,8 @@
 
 - [Java]()
   - [编程基础](./Java/Java编程基础.md)
-  - [开发环境](Java/Java开发环境.md)
-    - [开发环境](Java/Java开发环境.md)
+  - [开发环境](./Java/Java开发环境.md)
+    - [开发环境](./Java/Java开发环境.md)
     - [Maven配置](./Java/Maven%20POM.md)
 
   - [数据类型](./Java/Java数据类型.md)
@@ -46,7 +46,6 @@
     - [标准库](./CC++/标准库函数.md)
     - [数学函数](./CC++/数学函数.md)
 
-
 - [Web开发]()
   - [JavaScript](./JavaScript/JavaScript.md)
   - [TypeScript](./JavaScript/TypeScript.md)
@@ -58,7 +57,6 @@
 
   - [后端开发]()
     - [Express](./JavaScript/Express.md)
-
 
 - [开发工具]()
   - [正则表达式](./笔记/正则表达式.md)
@@ -119,6 +117,7 @@
   - [图神经网络](./机器学习/图神经网络.md)
 
 - [统计学习算法](./机器学习/统计学习算法.md)
+
 ---
 
 ## 数据库
@@ -141,6 +140,7 @@
 - [Mongodb](./数据库/Mongodb.md)
 - [图数据库](./数据库/GraphDatabase.md)
 - [内存数据库](./数据库/MemoryCache.md)
+
 ---
 
 ## 大数据和服务平台
@@ -172,3 +172,4 @@
   - [DNS](./Protocols/DNS.md)
   - [IP协议](./Protocols/Internet%20Protocol.md)
   - [RPC](./Protocols/RPC.md)
+

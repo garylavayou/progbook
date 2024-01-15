@@ -1,12 +1,10 @@
-import sys
-from typing import Union
-import warnings
 import os
+import sys
+import warnings
 from argparse import ArgumentParser
+from typing import Union
 
 import yaml
-
-
 
 print_newline = False
 # title: str = "Summary"  # title need not to be passed to subroutine
@@ -45,7 +43,7 @@ def check_source(
             if isinstance(source, str):
                 path = os.path.join(docs_dir, source)
                 if not os.path.exists(path):
-                    warnings.warn(f"{entry}: <{path}> does not exist!")
+                    warnings.warn(f"{entry}: <{path}> does not exist!") # warnings goes to stderr
                 else:
                     source = source.replace(" ", "%20")
                     if style == 'docsify_sidebar':

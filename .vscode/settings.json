@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "condapack",
         "docsify",
         "doxygen",
         "followlinks",
@@ -12,5 +13,8 @@
         "progbook",
         "Pyspark",
         "scikit"
-    ]
+    ],
+    "markdownlint.config": {
+        "no-inline-html": false
+    }
 }

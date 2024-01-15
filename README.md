@@ -7,7 +7,9 @@ The content sources are not contained in this repository.
 
 About writing in [Markdown](https://www.markdownguide.org/).
 
-## Configure the Source
+## Preparation
+
+### Configure the Source
 
 Make sure all referred Markdown documents in `src/SUMMARY.md` (mdBook) or `mkdocs.yml` (MkDocs) are put into the `src` folder, or softly linked from the `src` folder.
 We use a `sources.conf` file to track the real path of our documents, so that no need to move source documents into the `src` folder.
@@ -29,6 +31,12 @@ tree -l -P '*.md' src > mydocs.$(date +%F).txt
 Then, add them to your book specification files.
 You can save the result, and then next time compare it with new results to find what changes.
 
+### Install Python Runtime Environment
+
+```shell
+condapack --file requirements.pip progbook
+```
+
 ## Usage of mdBook
 
 ### Install mdBook
@@ -42,6 +50,12 @@ version="v0.5.9"
 wget "https://github.com/lzanini/mdbook-katex/releases/download/${version}/mdbook-katex-${version}-x86_64-unknown-linux-gnu.tar.gz" --continue -O /tmp/mdbook-katex.tar.gz
 tar -xf /tmp/mdbook-katex.tar.gz -C ~/bin
 mdbook-katex --version
+version="v0.13.0"
+wget "https://github.com/badboy/mdbook-mermaid/releases/download/${version}/mdbook-mermaid-${version}-x86_64-unknown-linux-gnu.tar.gz" --continue -O /tmp/mdbook-mermaid.tar.gz
+tar -xf /tmp/mdbook-mermaid.tar.gz -C ~/bin
+mdbook-mermaid --version
+mdbook-mermaid install theme  # install mermaid support
+mdbook-theme
 ```
 
 ### Build the Book
@@ -49,8 +63,9 @@ mdbook-katex --version
 run html service locally to serve documents:
 
 ```shell
-python bin/checksource.py
-./linksrc.sh
+conda run --name progbook --no-capture-output python bin/checksource.py > src/SUMMARY.gen.md
+./linksrc.sh  # if some files cannot be find by the above command
+mv src/SUMMARY.gen.md src/SUMMARY.md  # compare the index file
 mdbook serve
 ```
 
@@ -108,15 +123,23 @@ docsify serve .build
 ### Current Issues of Using mdbook
 
 1. Cannot render math equations with `$...$` notations.
-   solved with [`mdbook-katex`](https://github.com/lzanini/mdbook-katex).
+   solved with [`mdbook-katex`](https://github.com/lzanini/mdbook-katex), 
+   replacing MathJax.
 
-1. Cannot properly render display equations in quote text.
+1. KaTeX cannot properly render **display equations in quote text**.
 
-1. KaTeX missing support for some latex commands, such as `\abs`.
+1. KaTeX missing support for some latex commands, such as `\abs`, `\label`.
+
+   See [Supported Functions](https://katex.org/docs/supported) for
+   supported LaTeX commands.
 
 1. KaTeX not support `\label` and `\ref`.
    - https://github.com/KaTeX/KaTeX/issues/2798
    - https://github.com/KaTeX/KaTeX/issues/2003
+  
+   > does not include `_` (underscore) in label string.
+
+1. Does not support text highlight with `==...==`.
 
 ### Current Issues of Using MkDocs
 
