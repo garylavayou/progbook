@@ -60,7 +60,7 @@ mdbook-mermaid --version
 mdbook-mermaid install && mv mermaid*.js theme  # install mermaid support
 REPO='https://github.com/zjp-CN/mdbook-theme'
 wget "${REPO}/releases/download/v0.1.4/mdbook-theme_linux.tar.gz" --continue -O /tmp/mdbook-theme_linux.tar.gz
-tar -xf mdbook-theme_linux.tar.gz -C ~/bin
+tar -xf /tmp/mdbook-theme_linux.tar.gz -C ~/bin
 # mdbook-theme has no version info
 ```
 

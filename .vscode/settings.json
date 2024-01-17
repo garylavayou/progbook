@@ -41,5 +41,23 @@
         "\\t": "{#1}^{\\top}",
         "\\textdash": "\\text{\\textendash}"
     },
-    "markdown-preview-enhanced.mathRenderingOption": "MathJax"
+    "markdown-preview-enhanced.mathRenderingOption": "MathJax",
+    "markdown.extension.math.enabled": true,
+    "mdmath.katexoptions": {
+        "macros": {
+            "\\abs": "\\left|#1\\right|",
+            "\\b": "\\bold{#1}",
+            "\\d": "\\frac{\\partial #1}{\\partial 2}",
+            "\\l": "\\left",
+            "\\label": "~~[\\#\\textrm{#1}]",
+            "\\laplacian": "\\mathcal{L}(#1)",
+            "\\mb": "\\mathbf{#1}",
+            "\\mr": "\\mathrm{#1}",
+            "\\opl": "\\operatornamewithlimits{#1}",
+            "\\opn": "\\operatorname{#1}",
+            "\\r": "\\right",
+            "\\t": "{#1}^{\\top}",
+            "\\textdash": "\\text{\\textendash}"
+        }
+    }
 }
