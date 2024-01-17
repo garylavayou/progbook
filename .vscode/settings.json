@@ -1,20 +1,45 @@
 {
     "cSpell.words": [
+        "boldsymbol",
         "condapack",
         "docsify",
         "doxygen",
         "followlinks",
         "katex",
+        "mathbf",
+        "mathcal",
         "mathjax",
+        "mathrm",
         "mdbook",
         "mkdocs",
         "nojekyll",
+        "operatorname",
+        "operatornamewithlimits",
         "prismjs",
         "progbook",
         "Pyspark",
-        "scikit"
+        "scikit",
+        "textdash",
+        "textendash",
+        "textrm"
     ],
     "markdownlint.config": {
         "no-inline-html": false
-    }
+    },
+    "markdown.extension.katex.macros": {
+        "\\abs": "\\left|#1\\right|",
+        "\\b": "\\bold{#1}",
+        "\\d": "\\frac{\\partial #1}{\\partial 2}",
+        "\\l": "\\left",
+        "\\label": "~~[\\#\\textrm{#1}]",
+        "\\laplacian": "\\mathcal{L}(#1)",
+        "\\mb": "\\mathbf{#1}",
+        "\\mr": "\\mathrm{#1}",
+        "\\opl": "\\operatornamewithlimits{#1}",
+        "\\opn": "\\operatorname{#1}",
+        "\\r": "\\right",
+        "\\t": "{#1}^{\\top}",
+        "\\textdash": "\\text{\\textendash}"
+    },
+    "markdown-preview-enhanced.mathRenderingOption": "MathJax"
 }

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
     <script>
         if (typeof navigator.serviceWorker !== 'undefined') {
-          navigator.serviceWorker.register('sw.js')
+            navigator.serviceWorker.register('sw.js')
         }
     </script>
     <!-- mermaid support -->
@@ -45,6 +45,44 @@
                     ["\\(", "\\)"],
                 ], // default
                 displayMath: [["$$", "$$"]], // default
+                // katex options defined in: https://katex.org/docs/options.html
+                // mathjax options defined in: https://docs.mathjax.org/en/latest/options/index.html
+                // 
+                customOptions: {
+                    macros: { // for katex, sync: latex-macros.txt
+                        "\\abs": "\\left|#1\\right|",
+                        "\\b": "\\bold{#1}",
+                        "\\d": "\\frac{\\partial #1}{\\partial 2}",
+                        "\\l": "\\left",
+                        "\\label": "~~[\\#\\textrm{#1}]",
+                        "\\laplacian": "\\mathcal{L}(#1)",
+                        "\\mb": "\\mathbf{#1}",
+                        "\\mr": "\\mathrm{#1}",
+                        "\\opl": "\\operatornamewithlimits{#1}",
+                        "\\opn": "\\operatorname{#1}",
+                        "\\r": "\\right",
+                        "\\t": "{#1}^{\\top}",
+                        "\\textdash": "\\text{\\textendash}",
+                    },
+                    tex: { // for mathjax
+                        tags: 'ams',
+                        macros: { // sync: typora https://gist.github.com/garylavayou/97fa124dec4ad15bbe7c9bf800f98f5a
+                            // macro that simply replace command can be specified simply specified with the replaced command
+                            abs: ["\\left|#1\\right|", 1],
+                            b: "\\bold",
+                            bm: "\\boldsymbol",
+                            d: ["\\frac{\\partial #1}{\\partial #2}", 2],
+                            l: "\\left",
+                            laplacian: ["\\mathcal{L}(#1)", 1],
+                            mb: "\\mathbf",
+                            mr: "\\mathrm",
+                            opl: ["\\operatorname*{#1}", 1],
+                            opn: "\\operatorname",
+                            t: ["{#1}^{\\top}", 1],
+                            r: "\\right",
+                        }
+                    }
+                }
             },
             autoHeaders: {
                 separator: "decimal",

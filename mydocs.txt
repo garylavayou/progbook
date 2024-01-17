@@ -1,0 +1,229 @@
+src
+├── CC++ -> /mnt/d/Users/gary/Documents/程序设计/CC++
+│   ├── C++容器.md
+│   ├── C++开发环境.md
+│   ├── Modern C++.md
+│   ├── hackingcpp
+│   ├── 参考代码
+│   ├── 参考资料
+│   │   └── Visual_C++2008入门经典
+│   ├── 数学函数.md
+│   ├── 标准库函数.md
+│   └── 输入输出.md
+├── CSharp.NET -> /mnt/d/Users/gary/Documents/程序设计/CSharp.NET
+│   ├── C# 20Q
+│   ├── CSharp数值计算.md
+│   ├── CSharp数据容器.md
+│   ├── CSharp编程基础.md
+│   ├── CSharp输入输出.md
+│   ├── MediaInfoSharp
+│   │   ├── bin
+│   │   │   ├── Debug
+│   │   │   └── Release
+│   │   └── obj
+│   │       └── Debug
+│   │           └── TempPE
+│   ├── MediaInfoTest
+│   │   ├── Properties
+│   │   ├── bin
+│   │   │   ├── Debug
+│   │   │   └── Release
+│   │   └── obj
+│   │       └── Debug
+│   │           └── TempPE
+│   ├── dotnet开发.md
+│   └── 参考资料
+├── Java -> /mnt/d/Users/gary/Documents/程序设计/Java
+│   ├── Android应用程序
+│   ├── JAVA输入输出.md
+│   ├── JavaFrameworks.md
+│   ├── Java开发环境.md
+│   ├── Java数据类型.md
+│   ├── Java系统编程.md
+│   ├── Java编程基础.md
+│   ├── Java编程应用.md
+│   ├── Java语言与面向对象程序设计_资料
+│   │   ├── 3
+│   │   ├── 4
+│   │   ├── 5
+│   │   ├── 6
+│   │   ├── 7
+│   │   │   ├── 7-1
+│   │   │   └── 7-2
+│   │   ├── 8
+│   │   │   ├── 多线程
+│   │   │   ├── 异常处理
+│   │   │   ├── 网络编程
+│   │   │   └── 输入输出
+│   │   └── 9
+│   ├── Java高级编程.md
+│   ├── Library
+│   ├── Maven POM.md
+│   ├── Scala.md
+│   └── ScalaFrameworks.md
+├── JavaScript -> /mnt/d/Users/gary/Documents/程序设计/JavaScript
+│   ├── Angular.md
+│   ├── AntdPro.md
+│   ├── Express.md
+│   ├── JavaScript.md
+│   ├── JavaScript开发环境.md
+│   ├── TypeScript.md
+│   └── scripts
+├── Linux -> /mnt/d/Users/gary/Documents/程序设计/Linux
+│   ├── Linux-Shell.md
+│   ├── Linux发行版.md
+│   ├── Linux配置和管理.md
+│   ├── RHEL User Guides
+│   ├── UNIX环境高级编程
+│   ├── Ubuntu系统设置
+│   ├── Unix环境高级编程.md
+│   ├── scripts
+│   ├── tex
+│   │   └── _minted-Linux
+│   ├── 操作系统原理.md
+│   ├── 操作系统接口.md
+│   ├── 用户界面配置.md
+│   ├── 计算机硬件
+│   └── 高级语言编程
+│       ├── terminal
+│       └── 进程和线程
+│           ├── asynchronous
+│           ├── signal
+│           └── timer
+├── Matlab -> /mnt/d/Users/gary/Documents/程序设计/Matlab
+├── NewLang -> /mnt/d/Users/gary/Documents/程序设计/NewLang
+│   ├── Go
+│   ├── Julia
+│   │   └── Julia Language.md
+│   ├── Nushell.md
+│   └── Rust
+│       └── rust.md
+├── Perl -> /mnt/d/Users/gary/Documents/程序设计/Perl
+│   └── Perl.md
+├── Protocols -> /mnt/d/Users/gary/Documents/程序设计/Protocols
+│   ├── DNS.md
+│   ├── Internet Protocol.md
+│   ├── RPC.md
+│   └── http.md
+├── Python -> /mnt/d/Users/gary/Documents/程序设计/Python
+│   ├── Pandas.md
+│   ├── Python图形界面.md
+│   ├── Python开发环境.md
+│   ├── Python数值计算.md
+│   ├── Python数据类型.md
+│   ├── Python系统编程.md
+│   ├── Python编程基础.md
+│   ├── Python编程应用.md
+│   ├── Python输入输出.md
+│   ├── Python高级编程.md
+│   ├── README.md
+│   └── scripts
+├── README.md -> index.md
+├── SUMMARY.md
+├── Windows -> /mnt/d/Users/gary/Documents/程序设计/Windows
+│   ├── Windows API.md
+│   ├── Windows Applications.md
+│   ├── Windows Shell.md
+│   ├── Windows配置管理.md
+│   ├── assets
+│   ├── cmd.md
+│   └── scripts
+├── img
+├── index.md
+├── 图形界面 -> /mnt/d/Users/gary/Documents/程序设计/图形界面
+│   ├── Electron
+│   ├── GTK
+│   │   ├── GTK.md
+│   │   ├── assets
+│   │   └── gtk_guide
+│   ├── Microsoft Visual C++
+│   ├── Qt
+│   ├── Windows App
+│   ├── Windows Application.md
+│   ├── WindowsForm
+│   └── WindowsModernApplication.md
+├── 应用软件 -> /mnt/d/Users/gary/Documents/程序设计/应用软件
+│   ├── 协作办公软件.md
+│   ├── 多媒体编辑软件.md
+│   ├── 文件处理软件.md
+│   ├── 文档生成软件.md
+│   ├── 服务器管理软件.md
+│   ├── 知识管理软件.md
+│   ├── 程序开发软件.md
+│   ├── 网络服务软件.md
+│   └── 网络访问软件.md
+├── 开发环境 -> /mnt/d/Users/gary/Documents/程序设计/开发环境
+│   ├── Visual Studio使用技巧.md
+│   ├── git.md
+│   └── gitlab-cicd.md
+├── 数据交换语言 -> /mnt/d/Users/gary/Documents/程序设计/数据交换语言
+│   ├── HTML.md
+│   ├── JSON and YAML.md
+│   └── XML.md
+├── 数据库 -> /mnt/d/Users/gary/Documents/程序设计/数据库
+│   ├── Elasticsearch.md
+│   ├── ElasticsearchAPI.md
+│   ├── Elasticsearch数据源.md
+│   ├── Elasticsearch查询.md
+│   ├── GraphDatabase.md
+│   ├── HiveSQL.md
+│   ├── MemoryCache.md
+│   ├── Mongodb.md
+│   ├── MySQL.md
+│   ├── PostgreSQL.md
+│   ├── SQL DDL.md
+│   ├── SQL DML.md
+│   ├── SQL draft.md
+│   ├── SQL数据类型.md
+│   ├── SQL语法.md
+│   ├── clickhouse.md
+│   ├── scripts
+│   ├── sqlite.md
+│   ├── 数据库字符集.md
+│   └── 数据库简介.md
+├── 数据结构 -> /mnt/d/Users/gary/Documents/程序设计/数据结构
+│   └── fibonacci heap
+├── 服务器 -> /mnt/d/Users/gary/Documents/程序设计/服务器
+│   ├── Airflow.md
+│   ├── CDH6大数据集群离线安装.md
+│   ├── Dask on Yarn.md
+│   ├── Kubernetes.md
+│   ├── Metastore.md
+│   ├── Microservices.md
+│   ├── Spark Python API.md
+│   ├── Spark Scala API.md
+│   ├── Spark.md
+│   ├── hadoop-config.md
+│   ├── scripts
+│   ├── 分布式大数据处理.md
+│   ├── 容器编排.md
+│   ├── 流数据处理.md
+│   └── 虚拟化.md
+├── 机器学习 -> /mnt/d/Users/gary/Documents/程序设计/机器学习
+│   ├── DimensionalityReduction.md
+│   ├── Pytorch.md
+│   ├── ScikitLearn.md
+│   ├── TensorFlow Java.md
+│   ├── TensorFlow.md
+│   ├── 图数据分析.md
+│   ├── 图神经网络.md
+│   ├── 当Spark遇上TensorFlow分布式深度学习框架.md
+│   ├── 机器学习实践.md
+│   ├── 机器学习实践_files
+│   │   └── libs
+│   │       ├── bootstrap
+│   │       ├── clipboard
+│   │       └── quarto-html
+│   ├── 机器学习平台.md
+│   ├── 机器学习的数学基础.md
+│   ├── 机器学习算法.md
+│   └── 统计学习算法.md
+├── 笔记 -> /mnt/d/Users/gary/Documents/程序设计/笔记
+│   ├── MLResources.md
+│   ├── 哈希函数.md
+│   ├── 正则表达式.md
+│   └── 程序设计.md
+└── 算法 -> /mnt/d/Users/gary/Documents/程序设计/算法
+    └── 算法.md
+
+95 directories, 131 files
