@@ -27,7 +27,6 @@ macros = "latex-macros.txt"
 # install release from "https://github.com/slowsage/mdbook-pagetoc".
 
 [preprocessor.theme]
-# install release from https://github.com/zjp-CN/mdbook-theme
 # avoid: repeated building when "mdbook serve":
 # 1. run "mdbook build" once and set "turn-off = true"
 # 2. run "mdbook build" once and comment out this section

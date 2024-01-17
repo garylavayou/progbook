@@ -43,19 +43,25 @@ condapack --file requirements.pip progbook
 
 ```bash
 version="v0.4.36"
-wget "https://github.com/rust-lang/mdBook/releases/download/${version}/mdbook-${version}-x86_64-unknown-linux-gnu.tar.gz" --continue -O /tmp/mdbook.tar.gz
+REPO='https://github.com/rust-lang/mdBook'
+wget "${REPO}/releases/download/${version}/mdbook-${version}-x86_64-unknown-linux-gnu.tar.gz" --continue -O /tmp/mdbook.tar.gz
 mkdir -p ~/bin && tar -xf /tmp/mdbook.tar.gz -C ~/bin
 mdbook --version
 version="v0.5.9"
-wget "https://github.com/lzanini/mdbook-katex/releases/download/${version}/mdbook-katex-${version}-x86_64-unknown-linux-gnu.tar.gz" --continue -O /tmp/mdbook-katex.tar.gz
+REPO='https://github.com/lzanini/mdbook-katex'
+wget "${REPO}/releases/download/${version}/mdbook-katex-${version}-x86_64-unknown-linux-gnu.tar.gz" --continue -O /tmp/mdbook-katex.tar.gz
 tar -xf /tmp/mdbook-katex.tar.gz -C ~/bin
 mdbook-katex --version
 version="v0.13.0"
-wget "https://github.com/badboy/mdbook-mermaid/releases/download/${version}/mdbook-mermaid-${version}-x86_64-unknown-linux-gnu.tar.gz" --continue -O /tmp/mdbook-mermaid.tar.gz
+REPO='https://github.com/badboy/mdbook-mermaid'
+wget "${REPO}/releases/download/${version}/mdbook-mermaid-${version}-x86_64-unknown-linux-gnu.tar.gz" --continue -O /tmp/mdbook-mermaid.tar.gz
 tar -xf /tmp/mdbook-mermaid.tar.gz -C ~/bin
 mdbook-mermaid --version
-mdbook-mermaid install theme  # install mermaid support
-mdbook-theme
+mdbook-mermaid install && mv mermaid*.js theme  # install mermaid support
+REPO='https://github.com/zjp-CN/mdbook-theme'
+wget "${REPO}/releases/download/v0.1.4/mdbook-theme_linux.tar.gz" --continue -O /tmp/mdbook-theme_linux.tar.gz
+tar -xf mdbook-theme_linux.tar.gz -C ~/bin
+# mdbook-theme has no version info
 ```
 
 ### Build the Book
@@ -132,6 +138,8 @@ docsify serve .build
 
    See [Supported Functions](https://katex.org/docs/supported) for
    supported LaTeX commands.
+
+   subscripts including commands should be put into `{...}` block.
 
 1. KaTeX not support `\label` and `\ref`.
    - https://github.com/KaTeX/KaTeX/issues/2798
