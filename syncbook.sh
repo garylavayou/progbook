@@ -37,6 +37,7 @@ mkdocs)
     exit 0
     ;;
 docsify)
+    echo "info: ensure the resource has been compiled for offline usage."
     rsync -uav --delete --copy-links --chmod=$MODE .build/* /tmp/progbook-$src/
     ;;
 *)

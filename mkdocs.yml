@@ -3,7 +3,7 @@ site_name: Learning Programming Book
 # site_name: !ENV SITE_NAME, 'My default site name']
 theme: readthedocs
 docs_dir: src
-site_dir: site
+site_dir: .site
 site_url: https://learn.program.com/mkdocs/
 site_description: programming notes for daily use.
 site_author: Gary Wang

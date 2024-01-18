@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
     <!-- mermaid support -->
     <link rel="stylesheet" href="./docsify-themes/mermaid.min.css"/>
-    <script src="./docsify-plugins/node_modules/mermaid/dist/mermaid.min.js"></script>
     <link rel="stylesheet" href="./docsify-themes/vue.css" />
     <link rel="stylesheet" href="./docsify-plugins/node_modules/docsify-sidebar-collapse/dist/sidebar.min.css" />
 </head>
@@ -19,9 +18,6 @@
     <nav></nav>
     <div id="app">Loading...Please wait.</div>
     <script>
-        var num = 0;
-        mermaid.initialize({ startOnLoad: false });
-
         window.$docsify = {
             name: "ProgBook",
             loadSidebar: true,
@@ -41,6 +37,44 @@
                     ["\\(", "\\)"],
                 ], // default
                 displayMath: [["$$", "$$"]], // default
+                // katex options defined in: https://katex.org/docs/options.html
+                // mathjax options defined in: https://docs.mathjax.org/en/latest/options/index.html
+                // 
+                customOptions: {
+                    macros: { // for katex, sync: latex-macros.txt
+                        "\\abs": "\\left|#1\\right|",
+                        "\\b": "\\bold{#1}",
+                        "\\d": "\\frac{\\partial #1}{\\partial 2}",
+                        "\\l": "\\left",
+                        "\\label": "~~[\\#\\textrm{#1}]",
+                        "\\laplacian": "\\mathcal{L}(#1)",
+                        "\\mb": "\\mathbf{#1}",
+                        "\\mr": "\\mathrm{#1}",
+                        "\\opl": "\\operatornamewithlimits{#1}",
+                        "\\opn": "\\operatorname{#1}",
+                        "\\r": "\\right",
+                        "\\t": "{#1}^{\\top}",
+                        "\\textdash": "\\text{\\textendash}",
+                    },
+                    tex: { // for mathjax
+                        tags: 'ams',
+                        macros: { // sync: typora https://gist.github.com/garylavayou/97fa124dec4ad15bbe7c9bf800f98f5a
+                            // macro that simply replace command can be specified simply specified with the replaced command
+                            abs: ["\\left|#1\\right|", 1],
+                            b: "\\bold",
+                            bm: "\\boldsymbol",
+                            d: ["\\frac{\\partial #1}{\\partial #2}", 2],
+                            l: "\\left",
+                            laplacian: ["\\mathcal{L}(#1)", 1],
+                            mb: "\\mathbf",
+                            mr: "\\mathrm",
+                            opl: ["\\operatorname*{#1}", 1],
+                            opn: "\\operatorname",
+                            t: ["{#1}^{\\top}", 1],
+                            r: "\\right",
+                        }
+                    }
+                }
             },
             autoHeaders: {
                 separator: "decimal",
@@ -62,20 +96,6 @@
                 color: "var(--theme-color,#42b983)",
                 height: "3px",
             },
-            markdown: {
-                renderer: {
-                    code: function (code, lang) {
-                        if (lang === "mermaid") {
-                            return (
-                                '<div class="mermaid">' +
-                                mermaid.render("mermaid-svg-" + num++, code) +
-                                "</div>"
-                            );
-                        }
-                        return this.origin.code.apply(this, arguments);
-                    },
-                },
-            },
             repo: "",
         };
     </script>
@@ -83,6 +103,12 @@
     <script src="./docsify-plugins/node_modules/docsify/lib/docsify.js"></script>
     <!-- Docsify plugins -->
     <script src="./docsify-plugins/autoheaders.js"></script>
+    <script type="module">
+        import mermaid from "./docsify-plugins/node_modules/mermaid/dist/mermaid.esm.min.mjs";
+        mermaid.initialize({ startOnLoad: true });
+        window.mermaid = mermaid;
+    </script>
+    <script src="./docsify-plugins/node_modules/docsify-mermaid/dist/docsify-mermaid.js"></script>
     <script src="./docsify-plugins/node_modules/docsify-tabs/dist/docsify-tabs.js"></script>
     <script src="./docsify-plugins/node_modules/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/@sy-records/docsify-footnotes/lib/index.min.js"></script> -->

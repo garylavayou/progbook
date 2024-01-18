@@ -1,5 +1,6 @@
-site
-book
+.site
+.book
+.build
 src/笔记
 src/服务器
 src/机器学习
@@ -51,7 +52,6 @@ docs/Windows
 # theme/MathJax.js
 
 node_modules
-.build
 docsify-fonts
 docs/docsify-themes/fonts
 docs/docsify-themes/buble.css

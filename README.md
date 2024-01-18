@@ -9,15 +9,34 @@ About writing in [Markdown](https://www.markdownguide.org/).
 
 ## Preparation
 
+### Install Python Runtime Environment
+
+```shell
+condapack --file requirements.pip progbook #*
+```
+
+> `*`: condapack is a self-made conda-wrapper. You can create the environment by directly
+> call `conda`:
+>
+> ```shell
+> conda create -n progbook --file requirements.pip
+> ```
+
 ### Configure the Source
 
-Make sure all referred Markdown documents in `src/SUMMARY.md` (mdBook) or `mkdocs.yml` (MkDocs) are put into the `src` folder, or softly linked from the `src` folder.
-We use a `sources.conf` file to track the real path of our documents, so that no need to move source documents into the `src` folder.
+All the necessary referred Markdown documents are specified in `mkdocs.yml` (MkDocs), and we will convert the content so that it can be referred by other tools.
+For example, you can run the following command to generate files that needed by mdBook:
 
-```bash
-/path/to/real/source1 # -> ln -sf /path/to/real/source1 src/source1
-/path/to/real/source2 # -> ln -sf /path/to/real/source2 src/source2
-......
+```shell
+conda run --name progbook --no-capture-output python bin/checksource.py > src/SUMMARY.gen.md
+```
+
+Based on the convert output, you can identify that is some linked source folder is missing in
+local file system, and update the `sources.conf` file with the right source folder.
+Then, run the following command to link the source folders into the workspace.
+
+```shell
+./bin/linksrc.sh
 ```
 
 ### Find Your Documents
@@ -25,60 +44,45 @@ We use a `sources.conf` file to track the real path of our documents, so that no
 List all the markdown files in the folder:
 
 ```shell
-tree -l -P '*.md' src > mydocs.$(date +%F).txt
+tree -l -P '*.md' src | head -n -1 > mydocs.$(date +%F).txt
 ```
 
-Then, add them to your book specification files.
-You can save the result, and then next time compare it with new results to find what changes.
-
-### Install Python Runtime Environment
-
-```shell
-condapack --file requirements.pip progbook
-```
+Then, add extra items to your book specification files (`mkdocs.yml`).
+You can save the above result, and then next time compare it with new results to find what changes.
 
 ## Usage of mdBook
 
 ### Install mdBook
 
 ```bash
-version="v0.4.36"
-REPO='https://github.com/rust-lang/mdBook'
-wget "${REPO}/releases/download/${version}/mdbook-${version}-x86_64-unknown-linux-gnu.tar.gz" --continue -O /tmp/mdbook.tar.gz
-mkdir -p ~/bin && tar -xf /tmp/mdbook.tar.gz -C ~/bin
-mdbook --version
-version="v0.5.9"
-REPO='https://github.com/lzanini/mdbook-katex'
-wget "${REPO}/releases/download/${version}/mdbook-katex-${version}-x86_64-unknown-linux-gnu.tar.gz" --continue -O /tmp/mdbook-katex.tar.gz
-tar -xf /tmp/mdbook-katex.tar.gz -C ~/bin
-mdbook-katex --version
-version="v0.13.0"
-REPO='https://github.com/badboy/mdbook-mermaid'
-wget "${REPO}/releases/download/${version}/mdbook-mermaid-${version}-x86_64-unknown-linux-gnu.tar.gz" --continue -O /tmp/mdbook-mermaid.tar.gz
-tar -xf /tmp/mdbook-mermaid.tar.gz -C ~/bin
-mdbook-mermaid --version
-mdbook-mermaid install && mv mermaid*.js theme  # install mermaid support
-REPO='https://github.com/zjp-CN/mdbook-theme'
-wget "${REPO}/releases/download/v0.1.4/mdbook-theme_linux.tar.gz" --continue -O /tmp/mdbook-theme_linux.tar.gz
-tar -xf /tmp/mdbook-theme_linux.tar.gz -C ~/bin
-# mdbook-theme has no version info
+./bin/install-mdbook.sh
 ```
+
+#### Integrated Plugins for mdBook
+
+- [mdbook-katex](https://github.com/lzanini/mdbook-katex)
+- [mdbook-mermaid](https://github.com/badboy/mdbook-mermaid)
+- [mdbook-theme](https://github.com/zjp-CN/mdbook-theme)
+- ...
 
 ### Build the Book
 
 run html service locally to serve documents:
 
 ```shell
-conda run --name progbook --no-capture-output python bin/checksource.py > src/SUMMARY.gen.md
-./linksrc.sh  # if some files cannot be find by the above command
 mv src/SUMMARY.gen.md src/SUMMARY.md  # compare the index file
-mdbook serve
+mdbook serve [path/to/book]  # watch file changes*
 ```
+
+> `*`: `path/to/book` is the folder containing `book.toml`, default is current working
+> directory. `.gitignore` files in the root of the book directory specifies the files 
+> that should be excluded from watch.
 
 or output html files and then put it on other web servers.
 
 ```shell
 mdbook build
+mdbook watch path/to/book  # watch file changes and rebuild the book*
 ```
 
 ## Usage of MkDocs
@@ -113,6 +117,17 @@ pip install mkdocs-foo-plugin
 npm i docsify-cli -g
 ```
 
+#### Integrated Plugins for Docsify
+
+- [docsify-autoHeaders (modified)](https://github.com/garylavayou/docsify-autoHeaders/tree/level-range-auto-number);
+- [docsify-mermaid](https://github.com/Leward/mermaid-docsify)
+- [docsify-tabs](https://jhildenbiddle.github.io/docsify-tabs/)
+- docsify-sidebar-collapse
+- [docsify-latex](https://scruel.github.io/docsify-latex/#/) (KaTeX/MathJax)
+- [docsify-progress](https://github.com/HerbertHe/docsify-progress)
+- [docsify-image-caption](https://h-hg.github.io/docsify-image-caption/#/)
+- [prism](https://docsify.js.org/#/language-highlight)
+
 ### Compile Document Source via Docsify
 
 ```shell
@@ -129,23 +144,12 @@ docsify serve .build
 ### Current Issues of Using mdbook
 
 1. Cannot render math equations with `$...$` notations.
-   solved with [`mdbook-katex`](https://github.com/lzanini/mdbook-katex), 
-   replacing MathJax.
 
-1. KaTeX cannot properly render **display equations in quote text**.
+   - Official Notes: [MathJax Support](https://rust-lang.github.io/mdBook/format/mathjax.html)
+   - The issue post: [Improve MathJax support by enabling `$$` for math equations (#400)](https://github.com/rust-lang/mdBook/issues/400)
 
-1. KaTeX missing support for some latex commands, such as `\abs`, `\label`.
-
-   See [Supported Functions](https://katex.org/docs/supported) for
-   supported LaTeX commands.
-
-   subscripts including commands should be put into `{...}` block.
-
-1. KaTeX not support `\label` and `\ref`.
-   - https://github.com/KaTeX/KaTeX/issues/2798
-   - https://github.com/KaTeX/KaTeX/issues/2003
-  
-   > does not include `_` (underscore) in label string.
+   **Fix**: solved with [`mdbook-katex`](https://github.com/lzanini/mdbook-katex),
+   replacing MathJax, but [KaTeX](#common-issues-on-using-katex-to-render-equations) itself has other issues.
 
 1. Does not support text highlight with `==...==`.
 
@@ -155,4 +159,27 @@ docsify serve .build
 
 ### Current Issues of Using Docsify
 
-1. `Error: Diagram mindmap already registered.`.
+1. Does not support text highlight with `==...==`.
+1. Does not support nesting bold and italic text. `***...***`。
+
+### Common Issues on Using KaTeX to Render Equations
+
+1. KaTeX cannot properly render **display equations in quote text** (==no discussion on the internet==).
+
+1. KaTeX missing support for some latex commands, such as `\abs`.
+
+   See [Supported Functions](https://katex.org/docs/supported) for
+   supported LaTeX commands.
+
+   **Fix**: using customized latex macros for katex (depends on the renderer who use
+   KaTeX, the configuration methods vary).
+
+1. For KaTeX to work properly: Subscripts including commands should be put into `{...}` block.
+
+1. KaTeX not support `\label` and `\ref`/`\eqref`.
+   - https://github.com/KaTeX/KaTeX/issues/2798
+   - https://github.com/KaTeX/KaTeX/issues/2003
+  
+   **Fix**:
+   - use customized macro to renew  `\label` and `\ref`/`\eqref`.
+   - does not include `_` (underscore) in label string.

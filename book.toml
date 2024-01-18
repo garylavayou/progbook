@@ -11,8 +11,8 @@ description = "The example book covers examples."
 # [rust]
 # edition = "2018"
 
-# [build]
-# build-dir = "my-example-book"
+[build]
+build-dir = ".book"
 # create-missing = false
 
 [preprocessor.mermaid]
@@ -25,6 +25,7 @@ macros = "latex-macros.txt"
 
 # [preprocessor.pagetoc]
 # install release from "https://github.com/slowsage/mdbook-pagetoc".
+#! replaced by "mdbook-theme"
 
 [preprocessor.theme]
 # avoid: repeated building when "mdbook serve":
@@ -74,4 +75,4 @@ no-section-label = true
 # input-404 = "not-found.md"
 
 [output.html.search]
-enable = false  # addres [searchindex.json is very large]
+enable = false  # set to false to avoid [searchindex.json is very large]

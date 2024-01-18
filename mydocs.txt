@@ -118,7 +118,6 @@ src
 │   ├── Python高级编程.md
 │   ├── README.md
 │   └── scripts
-├── README.md -> index.md
 ├── SUMMARY.md
 ├── Windows -> /mnt/d/Users/gary/Documents/程序设计/Windows
 │   ├── Windows API.md
@@ -226,4 +225,3 @@ src
 └── 算法 -> /mnt/d/Users/gary/Documents/程序设计/算法
     └── 算法.md
 
-95 directories, 131 files
