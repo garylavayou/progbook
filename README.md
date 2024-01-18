@@ -24,7 +24,8 @@ condapack --file requirements.pip progbook #*
 
 ### Configure the Source
 
-All the necessary referred Markdown documents are specified in `mkdocs.yml` (MkDocs), and we will convert the content so that it can be referred by other tools.
+All the necessary referred Markdown documents are specified in `mkdocs.yml` (MkDocs), and we 
+will convert the content so that it can be referred by other tools.
 For example, you can run the following command to generate files that needed by mdBook:
 
 ```shell
@@ -39,12 +40,14 @@ Then, run the following command to link the source folders into the workspace.
 ./bin/linksrc.sh
 ```
 
+And then rerun the `checksource.py`.
+
 ### Find Your Documents
 
 List all the markdown files in the folder:
 
 ```shell
-tree -l -P '*.md' src | head -n -1 > mydocs.$(date +%F).txt
+tree -l -P '*.md' src | grep -v '.gen.md' | head -n -1 > mydocs.$(date +%F).txt
 ```
 
 Then, add extra items to your book specification files (`mkdocs.yml`).
@@ -75,7 +78,7 @@ mdbook serve [path/to/book]  # watch file changes*
 ```
 
 > `*`: `path/to/book` is the folder containing `book.toml`, default is current working
-> directory. `.gitignore` files in the root of the book directory specifies the files 
+> directory. `.gitignore` files in the root of the book directory specifies the files
 > that should be excluded from watch.
 
 or output html files and then put it on other web servers.
