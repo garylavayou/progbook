@@ -65,7 +65,7 @@ for f in ~/bin/mdbook-theme-v*; do
         echo "info: install new version ($version)..."
         REPO='https://github.com/zjp-CN/mdbook-theme'
         wget "${REPO}/releases/download/${version}/mdbook-theme_linux.tar.gz" --continue -O /tmp/mdbook-theme_linux.tar.gz
-        tar -xf /tmp/mdbook-theme_linux.tar.gz -C 
+        tar -xf /tmp/mdbook-theme_linux.tar.gz -C ~/bin
         ln -sf ~/bin/mdbook-theme ~/bin/mdbook-theme-$version
     else
         echo "info: mdbook-theme version ($version) exist."

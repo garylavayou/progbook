@@ -131,12 +131,23 @@ npm i docsify-cli -g
 ### Compile Document Source via Docsify
 
 ```shell
-python bin/checksource.py --style docsify > docs/README.gen.md
-python bin/checksource.py --style docsify_sidebar > docs/_sidebar.gen.md
-export SOURCE_DIR=docs 
-./linksrc.sh
+conda run --name progbook --no-capture-output python bin/checksource.py --style docsify > docs/README.gen.md
+conda run --name progbook --no-capture-output python bin/checksource.py --style docsify_sidebar > docs/_sidebar.gen.md
+SOURCE_DIR=docs ./bin/linksrc.sh
 ./bin/docsify-compile.py --clean --offline
 docsify serve .build
+```
+
+#### Deploy as Static Site
+
+Upload the content of `.build` to an HTTP server's static resource path, then the site can be visited via that server.
+The resource path on HTTP server should be consistent with the configuration `basePath` in `index.html`.
+For example, we set it to be `/docsify/` by default, and the access URL should be `http://server-site:port/docsify/#/"`。
+
+For demonstration purpose, we can simply link the content into the deploy location:
+
+```shell
+mkdir -p ~/usr/share/html && ln -svf --no-dereference $(realpath .build) ~/usr/share/html/docsify
 ```
 
 ## Issues
