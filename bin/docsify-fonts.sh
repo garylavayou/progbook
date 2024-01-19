@@ -7,7 +7,6 @@ DOCSIFY_DIR=${DOCSIFY_DIR:-'docs/docsify-plugins/node_modules/docsify'}
 TARGET_DIR=${TARGET_DIR:-'docs'}
 set -e
 
-
 if [ ! -e "$DOCSIFY_DIR" ]; then
     cwd=$(pwd)
     cd $(dirname $(dirname "$DOCSIFY_DIR"))

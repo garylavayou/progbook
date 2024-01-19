@@ -8,7 +8,9 @@ from argparse import ArgumentParser
 from typing import List, Union
 
 
-def exec(command: Union[str, List[str]], on_error="exit", **options):
+def exec(command: Union[str, List[str]], on_error="exit", log:bool=False, **options):
+    if log:
+        print(f"exec: {command}", file=sys.stderr)
     if isinstance(command, str):
         p = sp.run(command, shell=True, **options)
     else:
@@ -54,16 +56,16 @@ options = parser.parse_args(args=sys.argv[1:])
 
 source_dir = options.source
 target_dir = options.target
-filters = [r"\.(md|png|jpe?g|svg|webp|gif)", r"\.nojekyll", r"sw\.js"]
+include_filters = [r"\.(md|png|jpe?g|svg|webp|gif)", r"\.nojekyll", r"sw\.js"]
 if options.offline:
-    filters.extend(["docsify-fonts", "docsify-plugins"])
+    include_filters.extend(["docsify-fonts", "docsify-plugins"])
 else:
-    filters.extend([r"index\.html"])
-# reverse_filters have higher priority that filters
-reverse_filters = [
+    include_filters.extend([r"index\.html"])
+# exclude_filters have higher priority than include_filters (like rsync)
+exclude_filters = [
     r"/\.~",
     r"\.(?:obsidian)",
-    r"(?:quarto_files|node_modules)",  # node_modules contains many files, sync it in one command
+    r"(?:quarto_files|node_modules)",  # node_modules not synced, install it in target dir
 ]
 if options.clean and os.path.exists(target_dir):
     shutil.rmtree(target_dir, ignore_errors=False)
@@ -75,7 +77,7 @@ for dirpath, _, filenames in os.walk(source_dir, followlinks=True):
     for f in filenames:
         filepath = os.path.join(dirpath, f)
         tf_skip = False
-        for pattern in reverse_filters:
+        for pattern in exclude_filters:
             m = re.search(pattern, filepath)
             if m is not None:
                 tf_skip = True
@@ -83,7 +85,7 @@ for dirpath, _, filenames in os.walk(source_dir, followlinks=True):
         if tf_skip:
             continue
         tf_match = False
-        for pattern in filters:
+        for pattern in include_filters:
             m = re.search(pattern, filepath)
             if m is not None:
                 print("{0}".format(filepath))
@@ -93,38 +95,68 @@ for dirpath, _, filenames in os.walk(source_dir, followlinks=True):
             continue
         target_file = filepath.replace(source_dir, target_dir, 1)
         init_dir(target_file)
-        if filepath.endswith(".md"):  # TODO only processing new/newer files
+        if filepath.endswith(".md"):
             # prepend path prefix for relative path images
             #   'src = "path/to/image.png"' -> 'src = "{prefix}/path/to/image.png"'
             # exceptions:
             #   'src="http://example.com/path/to/image.png"'
             #   'src = "/path/to/image.png"'
+            #! only processing new/newer files
+            if not os.path.exists(target_file) or os.path.getmtime(filepath) <= os.path.getmtime(target_file):
+                print(f"info: source <{filepath}> is not updated since the last compile, skip!")
+                continue
             dir_prefix = (
                 os.path.dirname(filepath)
                 .replace(source_dir, ".", 1)
                 .replace("/", r"\/")
             )
-            # sed  -E  's/\bsrc\s*=\s*"(?:\.\/)?([^/].*)"/src="{dir_prefix}\/\1"/' '{filepath}' > '{target_file}'
+            #! update file contents and save to target file
             replace_command = rf"""
-              perl -pe 's/\bsrc\s*=\s*"(?!(?:https?:\/)?\/)(?:\.\/)?(.*)"/src="{dir_prefix}\/\1"/' '{filepath}' | tee '{target_file}' | sed -En 's/src=/src=/p'
+              perl -pe 's/\bsrc\s*=\s*"(?!(?:https?:\/)?\/)(?:\.\/)?(.*)"/src="{dir_prefix}\/\1"/' '{filepath}' | tee '{target_file}' | sed -En 's/src=/src=/p' | xargs -I {{}} echo "-> {{}}"
             """
             # print(replace_command)
             exec(replace_command)
         else:
             exec(["rsync", "-ua", "--delete", filepath, target_file])  # -v
+# TODO: sync all other files at once, need better filter rules.
+# wildcard PATTERN MATCHING RULES for include/exclude            
+# sync = [
+#     "rsync", 
+#     "-ua", 
+#     "--delete", 
+#     source_dir+'/', 
+#     target_dir+"/", 
+#     "--include", "**.png",
+#     "--include", "**.jpg",
+#     "--include", "**.jpeg",
+#     "--include", "**.webp",
+#     "--include", "**.gif",
+#     "--include", ".nojekyll",
+#     "--include", "sw.js",
+#     "--exclude", "*",
+#     ]
+# exec(sync, log=True)
 
 if options.offline:
+    #! sync index.local.html as index.html
     filepath = source_dir + "/index.local.html"
     target_file = target_dir + "/index.html"
-    exec(["rsync", "-ua", filepath, target_file])
+    exec(["rsync", "-uav", filepath, target_file])
+    #! use synced node package specification to install node modules in target
     filepath = target_dir + "/docsify-plugins/package.json"
     if not os.path.exists(filepath):
-        raise FileNotFoundError("node package specification does not")
+        raise FileNotFoundError("node package specification does not synced to target")
     cur_dir = os.getcwd()
     work_dir = os.path.dirname(filepath)
     os.chdir(work_dir)
     exec(["npm", "install"])
     os.chdir(cur_dir)
+    #! sync offline font resources
+    if not os.path.exists(os.path.join(source_dir, "docsify-themes", "fonts")):
+        os.environ['THEME_DIR'] = os.path.join(source_dir, "docsify-themes")
+        os.environ['DOCSIFY_DIR'] = os.path.join(source_dir, "docsify-plugins/node_modules/docsify")
+        os.environ['TARGET_DIR'] = os.path.join(source_dir)
+        exec(["./bin/docsify-fonts.sh"])
     for dirpath, _, filenames in os.walk(
         source_dir + "/docsify-themes", followlinks=True
     ):

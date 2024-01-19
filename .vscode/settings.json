@@ -23,6 +23,7 @@
         "prismjs",
         "progbook",
         "Pyspark",
+        "realpath",
         "scikit",
         "textdash",
         "textendash",
@@ -64,5 +65,10 @@
             "\\t": "{#1}^{\\top}",
             "\\textdash": "\\text{\\textendash}"
         }
+    },
+    "files.exclude": {
+        ".book": true,
+        ".build": true,
+        ".site": true
     }
 }

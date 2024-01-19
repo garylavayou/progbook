@@ -1,4 +1,4 @@
-# progbook
+# ProgBook
 
 Use mdBook/MkDocs/Docsify to generate a book from my programming notes.
 
@@ -145,12 +145,13 @@ docsify serve .build
 
 Upload the content of `.build` to an HTTP server's static resource path, then the site can be visited via that server.
 The resource path on HTTP server should be consistent with the configuration `basePath` in `index.html`.
-For example, we set it to be `/docsify/` by default, and the access URL should be `http://server-site:port/docsify/#/"`。
+For example, we set it to be `/docsify/` by default, and the access URL should be `http://server-site:port/docsify/"`。
 
 For demonstration purpose, we can simply link the content into the deploy location:
 
 ```shell
 mkdir -p ~/usr/share/html && ln -svf --no-dereference $(realpath .build) ~/usr/share/html/docsify
+conda run --name progbook --no-capture-output python -m http.server --bind 0.0.0.0 --directory ~/usr/share/html 8000
 ```
 
 ## Issues
@@ -191,8 +192,8 @@ mkdir -p ~/usr/share/html && ln -svf --no-dereference $(realpath .build) ~/usr/s
 1. For KaTeX to work properly: Subscripts including commands should be put into `{...}` block.
 
 1. KaTeX not support `\label` and `\ref`/`\eqref`.
-   - https://github.com/KaTeX/KaTeX/issues/2798
-   - https://github.com/KaTeX/KaTeX/issues/2003
+   - <https://github.com/KaTeX/KaTeX/issues/2798>
+   - <https://github.com/KaTeX/KaTeX/issues/2003>
   
    **Fix**:
    - use customized macro to renew  `\label` and `\ref`/`\eqref`.
