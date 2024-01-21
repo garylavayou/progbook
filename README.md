@@ -32,7 +32,7 @@ For example, you can run the following command to generate files that needed by 
 conda run --name progbook --no-capture-output python bin/checksource.py > src/SUMMARY.gen.md
 ```
 
-Based on the convert output, you can identify that is some linked source folder is missing in
+Based on the convert output, you can identify if some linked source folder is missing in
 local file system, and update the `sources.conf` file with the right source folder.
 Then, run the following command to link the source folders into the workspace.
 
@@ -176,6 +176,29 @@ conda run --name progbook --no-capture-output python -m http.server --bind 0.0.0
 
 1. Does not support text highlight with `==...==`.
 1. Does not support nesting bold and italic text. `***...***`。
+1. relative path in [**sidebar**](./docs/_sidebar.md) changes its base path when the opening
+   document changes.
+
+   **Fix**: use absolute path for sidebar, only use relative path's in documents.
+
+1. [**sidebar**](./docs/_sidebar.md) file should not contain headers, otherwise these headers
+   will be repeatedly added to the sub-nodes when `/_sidebar.md` is shared by all sub-folders.
+
+   **Fix**: Do not write headers in `_sidebar.md`, instead, write **multi-level lists** to
+   reflect content hierarchy.
+
+1. When used with `docsify-sidebar-collapse`, the link on parent nodes is invalid. The click
+   event triggers collapse/expand.
+
+   **Note**: no need to fix as this is the expected behavior.
+
+1. Relative paths in HTML elements are not converted to unified absolute URLs.
+
+   **Fix**: convert source to replace the relative path in embedded HTML elements.
+
+1. Footnote plugin coincide with regex pattern [^abc].
+
+   **Note**: disable the plugin.
 
 ### Common Issues on Using KaTeX to Render Equations
 
