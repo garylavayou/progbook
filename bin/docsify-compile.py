@@ -102,7 +102,7 @@ for dirpath, _, filenames in os.walk(source_dir, followlinks=True):
             #   'src="http://example.com/path/to/image.png"'
             #   'src = "/path/to/image.png"'
             #! only processing new/newer files
-            if not os.path.exists(target_file) or os.path.getmtime(filepath) <= os.path.getmtime(target_file):
+            if os.path.exists(target_file) and os.path.getmtime(filepath) <= os.path.getmtime(target_file):
                 print(f"info: source <{filepath}> is not updated since the last compile, skip!")
                 continue
             dir_prefix = (
