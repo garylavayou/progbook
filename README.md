@@ -136,6 +136,9 @@ npm i docsify-cli -g
 ```shell
 conda run --name progbook --no-capture-output python bin/checksource.py --style docsify > docs/README.gen.md
 conda run --name progbook --no-capture-output python bin/checksource.py --style docsify_sidebar > docs/_sidebar.gen.md
+# after comparing changes.
+mv docs/README.gen.md docs/README.md
+mv docs/_sidebar.gen.md docs/_sidebar.md
 SOURCE_DIR=docs ./bin/linksrc.sh
 ./bin/docsify-compile.py --clean --offline
 docsify serve .build

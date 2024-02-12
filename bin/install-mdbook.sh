@@ -9,13 +9,14 @@ function if_install(){
     else
         v=$($exec --version | sed -E "s/$exec (v?.*)/\1/")
         if [[ "$v" != "$version" ]]; then
+            echo "info: $exec version <$v> does not match <$version>, need download."
             return 0
         fi
     fi
     return 1
 }
 
-version="v0.4.36"
+version="v0.4.37"
 if if_install mdbook $version; then
     REPO='https://github.com/rust-lang/mdBook'
     wget "${REPO}/releases/download/${version}/mdbook-${version}-x86_64-unknown-linux-gnu.tar.gz" --continue -O /tmp/mdbook.tar.gz
@@ -27,7 +28,7 @@ else
     echo "info: mdbook version ($version) exist."
 fi
 
-version="0.5.9"
+version="0.5.10"
 if if_install mdbook-katex $version; then
     REPO='https://github.com/lzanini/mdbook-katex'
     wget "${REPO}/releases/download/v${version}/mdbook-katex-v${version}-x86_64-unknown-linux-gnu.tar.gz" --continue -O /tmp/mdbook-katex.tar.gz
