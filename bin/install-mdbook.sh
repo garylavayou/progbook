@@ -13,6 +13,7 @@ function if_install(){
     else
         v=$($exec --version | sed -E "s/$exec (v?.*)/\1/")
         if [[ "$v" != "$version" ]]; then
+            echo "info: $exec version <$v> does not match <$version>, need download."
             return 0
         fi
     fi

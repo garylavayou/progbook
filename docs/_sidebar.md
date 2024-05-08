@@ -1,35 +1,5 @@
 [首页](/README.md)
 
-<!-- Issue 1: relative path in sidebar changes its base path
-     when the opening document changes.
-
-     Fix: use absolute path for sidebar, only use relative path's in 
-     documents.
-  -->
-
-<!-- Issue 4: Relative paths in HTML elements are not converted to 
-     unified absolute URLs
-
-     Fix: convert source to replace the relative path in embedded HTML elements.
--->
-
-<!-- Issue 2: sidebar file should not contain headers, otherwise it these
-     headers will be repeatedly added to the sub-nodes when `/_sidebar.md`
-     is shared by all sub-folders.
-
-     Fix: Do not write headers in `_sidebar.md`, instead, write 
-     multi-level lists to reflect content hierarchy.
-     -->
-
-<!-- Issue 3: when used with `docsify-sidebar-collapse`, the link on 
-     parent nodes is invalid. The click event triggers collapse/expand.
-
-     Fix: no need to fix as this is the expected behavior.
-    -->
-
-<!-- Issue 5: footnote plugin coincide with regex pattern [^abc]. -->
-
-<!-- Issue 6: highlight block ==...== does not work. -->
 ---
 
 - 程序设计语言
