@@ -15,7 +15,7 @@ PROGDIR=$(dirname "$0") && cd "$PROGDIR"
 MODE='F644,D755'
 DATE=$(date +'%Y%m%d')
 # MODE='u=rw,go=r,D+x'
-src=${SOURCE:-'mdbook'}
+src=${1:-${SOURCE:-'mdbook'}}
 
 # rsync -uav --delete --exclude-from='.rsync-ignore' \
 #       --chmod=$MODE \
@@ -31,14 +31,14 @@ case $src in
 mdbook)
     rsync -uav --delete --exclude-from='.rsync-ignore' \
         --chmod=$MODE \
-        book/* /tmp/progbook-$src/
+        .book/* "/tmp/progbook-$src/"
     ;;
 mkdocs)
     exit 0
     ;;
 docsify)
     echo "info: ensure the resource has been compiled for offline usage."
-    rsync -uav --delete --copy-links --chmod=$MODE .build/* /tmp/progbook-$src/
+    rsync -uav --delete --copy-links --chmod=$MODE .build/* "/tmp/progbook-$src/"
     ;;
 *)
     exit 1
