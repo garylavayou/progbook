@@ -63,6 +63,7 @@ else:
     include_filters.extend([r"index\.html"])
 # exclude_filters have higher priority than include_filters (like rsync)
 exclude_filters = [
+    r"\.gen\.md$",
     r"/\.~",
     r"\.(?:obsidian)",
     r"(?:quarto_files|node_modules)",  # node_modules not synced, install it in target dir
