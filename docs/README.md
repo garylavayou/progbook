@@ -63,6 +63,7 @@
 - [现代编程语言]()
   - [Julia](./NewLang/Julia/Julia%20Language.md)
   - [Rust](./NewLang/Rust/rust.md)
+  - [Go](./NewLang/Go/go.md)
   - [NuShell](./NewLang/Nushell.md)
 
 ---
@@ -168,3 +169,4 @@
   - [DNS](./Protocols/DNS.md)
   - [IP协议](./Protocols/Internet%20Protocol.md)
   - [RPC](./Protocols/RPC.md)
+

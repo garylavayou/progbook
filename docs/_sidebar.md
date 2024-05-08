@@ -94,6 +94,7 @@
   - 现代编程语言
     - [Julia](/NewLang/Julia/Julia%20Language.md)
     - [Rust](/NewLang/Rust/rust.md)
+    - [Go](/NewLang/Go/go.md)
     - [NuShell](/NewLang/Nushell.md)
 
 ---
