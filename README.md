@@ -24,7 +24,7 @@ condapack --file requirements.pip progbook #*
 
 ### Configure the Source
 
-All the necessary referred Markdown documents are specified in `mkdocs.yml` (MkDocs), and we 
+All the necessary referred Markdown documents are specified in `mkdocs.yml` (MkDocs), and we
 will convert the content so that it can be referred by other tools.
 For example, you can run the following command to generate files that needed by mdBook:
 
@@ -53,9 +53,13 @@ tree -l -P '*.md' src | grep -v '.gen.md' | head -n -1 > mydocs.$(date +%F).txt
 Then, add extra items to your book specification files (`mkdocs.yml`).
 You can save the above result, and then next time compare it with new results to find what changes.
 
+> You may need to rerun `checksource.py` as above to reconfigure the source.
+
 ## Usage of mdBook
 
 ### Install mdBook
+
+Install and update mdBook and the used plugins:
 
 ```bash
 ./bin/install-mdbook.sh
@@ -88,6 +92,12 @@ mdbook build
 mdbook watch path/to/book  # watch file changes and rebuild the book*
 ```
 
+### Export the Build
+
+```shell
+./bin/syncbook.sh mdbook
+```
+
 ## Usage of MkDocs
 
 Make sure all referred Markdown documents are put into the `docs` folder, or softly linked from the `docs` folder.
@@ -117,7 +127,7 @@ pip install mkdocs-foo-plugin
 ### Install Docsify
 
 ```shell
-npm i docsify-cli -g
+sudo npm i docsify-cli -g
 ```
 
 #### Integrated Plugins for Docsify
@@ -150,8 +160,15 @@ For example, we set it to be `/docsify/` by default, and the access URL should b
 For demonstration purpose, we can simply link the content into the deploy location:
 
 ```shell
-mkdir -p ~/usr/share/html && ln -svf --no-dereference $(realpath .build) ~/usr/share/html/docsify
+BASE_PATH=/docsify
+mkdir -p ~/usr/share/html && ln -svf --no-dereference $(realpath .build) "${HOME}/usr/share/html${BASE_PATH}"
 conda run --name progbook --no-capture-output python -m http.server --bind 0.0.0.0 --directory ~/usr/share/html 8000
+```
+
+### Export the Docsify Build
+
+```shell
+./bin/syncbook.sh docsify
 ```
 
 ## Issues

@@ -25,6 +25,7 @@
         "Pyspark",
         "realpath",
         "scikit",
+        "syncbook",
         "textdash",
         "textendash",
         "textrm"

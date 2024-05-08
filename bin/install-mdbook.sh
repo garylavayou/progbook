@@ -1,5 +1,9 @@
-#!/bin/bash
-set -e
+#!/bin/bash -e
+
+echo "info: proxy settings:"
+echo ">> HTTPS_PROXY=${HTTPS_PROXY:-$https_proxy}"
+echo ">> HTTP_PROXY=${HTTP_PROXY:-$http_proxy}"
+echo ">> NO_PROXY=${NO_PROXY:-$no_proxy}"
 
 function if_install(){
     exec=$1
@@ -15,10 +19,16 @@ function if_install(){
     return 1
 }
 
-version="v0.4.36"
-if if_install mdbook $version; then
+# shellcheck disable=SC1091
+# shellcheck disable=SC1094
+source .env
+
+version="${MDBOOK_VERSION:-v0.4.37}"
+if if_install mdbook "$version"; then
     REPO='https://github.com/rust-lang/mdBook'
-    wget "${REPO}/releases/download/${version}/mdbook-${version}-x86_64-unknown-linux-gnu.tar.gz" --continue -O /tmp/mdbook.tar.gz
+    wget "${REPO}/releases/download/${version}/mdbook-${version}-x86_64-unknown-linux-gnu.tar.gz" \
+        --continue \
+        -O /tmp/mdbook.tar.gz
     mkdir -p ~/bin && tar -xf /tmp/mdbook.tar.gz -C ~/bin
     mdbook --version
     mkdir -p ~/.local/share/bash-completion/completions
@@ -27,20 +37,24 @@ else
     echo "info: mdbook version ($version) exist."
 fi
 
-version="0.5.9"
-if if_install mdbook-katex $version; then
+version="${MDBOOK_KATEX_VERSION:-0.8.0}"
+if if_install mdbook-katex "$version"; then
     REPO='https://github.com/lzanini/mdbook-katex'
-    wget "${REPO}/releases/download/v${version}/mdbook-katex-v${version}-x86_64-unknown-linux-gnu.tar.gz" --continue -O /tmp/mdbook-katex.tar.gz
+    wget "${REPO}/releases/download/v${version}/mdbook-katex-v${version}-x86_64-unknown-linux-gnu.tar.gz" \
+        --continue \
+        -O /tmp/mdbook-katex.tar.gz
     tar -xf /tmp/mdbook-katex.tar.gz -C ~/bin
     mdbook-katex --version
 else
     echo "info: mdbook-katex version ($version) exist."
 fi
 
-version="0.13.0"
-if if_install mdbook-mermaid $version; then
+version="${MDBOOK_MERMAID_VERSION:-0.13.0}"
+if if_install mdbook-mermaid "$version"; then
     REPO='https://github.com/badboy/mdbook-mermaid'
-    wget "${REPO}/releases/download/v${version}/mdbook-mermaid-v${version}-x86_64-unknown-linux-gnu.tar.gz" --continue -O /tmp/mdbook-mermaid.tar.gz
+    wget "${REPO}/releases/download/v${version}/mdbook-mermaid-v${version}-x86_64-unknown-linux-gnu.tar.gz" \
+        --continue \
+        -O /tmp/mdbook-mermaid.tar.gz
     tar -xf /tmp/mdbook-mermaid.tar.gz -C ~/bin
     mdbook-mermaid --version
     mdbook-mermaid install && mv mermaid*.js theme  # install mermaid support
@@ -48,7 +62,7 @@ else
     echo "info: mdbook-mermaid version ($version) exist."
 fi
 
-version="v0.1.4"
+version="${MDBOOK_THEME_VERSION:-v0.1.4}"
 # mdbook-theme has no version info
 for f in ~/bin/mdbook-theme-v*; do
     name=$(basename "$f")
@@ -64,9 +78,11 @@ for f in ~/bin/mdbook-theme-v*; do
     if [[ $tf_install -eq 0 ]]; then
         echo "info: install new version ($version)..."
         REPO='https://github.com/zjp-CN/mdbook-theme'
-        wget "${REPO}/releases/download/${version}/mdbook-theme_linux.tar.gz" --continue -O /tmp/mdbook-theme_linux.tar.gz
+        wget "${REPO}/releases/download/${version}/mdbook-theme_linux.tar.gz" \
+            --continue \
+            -O /tmp/mdbook-theme_linux.tar.gz
         tar -xf /tmp/mdbook-theme_linux.tar.gz -C ~/bin
-        ln -sf ~/bin/mdbook-theme ~/bin/mdbook-theme-$version
+        ln -sf ~/bin/mdbook-theme ~/bin/"mdbook-theme-$version"
     else
         echo "info: mdbook-theme version ($version) exist."
     fi
