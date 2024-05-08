@@ -102,7 +102,7 @@ for dirpath, _, filenames in os.walk(source_dir, followlinks=True):
             #   'src="http://example.com/path/to/image.png"'
             #   'src = "/path/to/image.png"'
             #! only processing new/newer files
-            if not os.path.exists(target_file) or os.path.getmtime(filepath) <= os.path.getmtime(target_file):
+            if os.path.exists(target_file) and os.path.getmtime(filepath) <= os.path.getmtime(target_file):
                 print(f"info: source <{filepath}> is not updated since the last compile, skip!")
                 continue
             dir_prefix = (
@@ -139,6 +139,7 @@ for dirpath, _, filenames in os.walk(source_dir, followlinks=True):
 
 if options.offline:
     #! sync index.local.html as index.html
+    # TODO replace the base URL setting in "/index.local.html" with customized value.
     filepath = source_dir + "/index.local.html"
     target_file = target_dir + "/index.html"
     exec(["rsync", "-uav", filepath, target_file])
@@ -165,6 +166,7 @@ if options.offline:
             target_file = filepath.replace(source_dir, target_dir, 1)
             init_dir(target_file)
             if filepath.find("fonts") == -1:
+                # the main css files
                 replace_dir_prefix = (
                     rf".\/fonts\/{f}"  # relative to the main theme files
                 )
@@ -173,7 +175,10 @@ if options.offline:
                 sed -E 's/@import\s+url\(".*"\)/@import url("{replace_dir_prefix}")/' '{filepath}' | tee '{target_file}' | sed -En 's/@import url/@import url/p'
                 """
             else:
-                replace_dir_prefix = rf"\/docsify-fonts"
+                # css files of fonts, 
+                # font url inside should be specifies relative to the css file.
+                # `../..` will be removed to generate the synthesized URL for the request by browser.
+                replace_dir_prefix = rf"..\/..\/docsify-fonts"
                 replace_command = rf"""
                 sed -E 's/(src:\s*url)\(https?:\/\/.*.com\/(.*)\)\s*(format\(.*\))/\1({replace_dir_prefix}\/\2) \3/' '{filepath}' | tee '{target_file}' | sed -En 's/src: url/src: url/p'
                 """
